@@ -21,7 +21,7 @@ const ViewStudentGradewise = () => {
 
   const retrieveAllUser = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/user/fetch/student/grade-wise?gradeId=" +
+      "http://basetutorials.com:8080/api/user/fetch/student/grade-wise?gradeId=" +
         teacher.grade.id
       // ,
       // {
@@ -35,7 +35,7 @@ const ViewStudentGradewise = () => {
   };
 
   const deleteUser = (userId, e) => {
-    fetch("http://localhost:8080/api/user/delete/user-id?userId=" + userId, {
+    fetch("http://basetutorials.com:8080/api/user/delete/user-id?userId=" + userId, {
       method: "DELETE",
       headers: {
         Accept: "application/json",

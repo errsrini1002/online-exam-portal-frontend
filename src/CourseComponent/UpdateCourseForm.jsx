@@ -30,7 +30,7 @@ const UpdateCourseForm = () => {
 
   const retrieveAllGrade = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/grade/fetch/all"
+      "http://basetutorials.com:8080/api/grade/fetch/all"
     );
     console.log(response.data);
     return response.data;

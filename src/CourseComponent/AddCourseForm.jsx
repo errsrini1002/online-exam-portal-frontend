@@ -27,7 +27,7 @@ const AddCourseForm = () => {
 
   const retrieveAllGrade = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/grade/fetch/all"
+      "http://basetutorials.com:8080/api/grade/fetch/all"
     );
     console.log(response.data);
     return response.data;
@@ -36,7 +36,7 @@ const AddCourseForm = () => {
   const saveCourse = (e) => {
     let data = { name, description, gradeId };
 
-    fetch("http://localhost:8080/api/course/add", {
+    fetch("http://basetutorials.com:8080/api/course/add", {
       method: "POST",
       headers: {
         Accept: "application/json",

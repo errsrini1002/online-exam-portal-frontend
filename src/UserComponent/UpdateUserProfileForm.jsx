@@ -52,7 +52,7 @@ const UpdateUserProfileForm = () => {
     formData.append("profilePic", selectedImage1);
 
     axios
-      .put("http://localhost:8080/api/user/profile/add", formData, {
+      .put("http://basetutorials.com:8080/api/user/profile/add", formData, {
         headers: {
           Authorization: "Bearer " + employee_jwtToken, // Replace with your actual JWT token
         },
