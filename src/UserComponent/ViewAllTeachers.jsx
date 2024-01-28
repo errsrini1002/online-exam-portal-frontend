@@ -20,7 +20,7 @@ const ViewAllTeachers = () => {
 
   const retrieveAllUser = async () => {
     const response = await axios.get(
-      "http://basetutorials.com:8080/api/user/fetch/role-wise?role=Teacher"
+      "http://localhost:8080/api/user/fetch/role-wise?role=Teacher"
       // ,
       // {
       //   headers: {
@@ -34,7 +34,7 @@ const ViewAllTeachers = () => {
 
   const deleteUser = (userId, e) => {
     fetch(
-      "http://basetutorials.com:8080/api/user/delete/user-id?userId=" + userId,
+      "http://localhost:8080/api/user/delete/user-id?userId=" + userId,
       {
         method: "DELETE",
         headers: {

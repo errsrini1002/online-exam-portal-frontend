@@ -37,7 +37,7 @@ const UserRegister = () => {
 
   const retrieveAllGrade = async () => {
     const response = await axios.get(
-      "http://basetutorials.com:8080/api/grade/fetch/all"
+      "http://localhost:8080/api/grade/fetch/all"
     );
     console.log(response.data);
     return response.data;
@@ -61,7 +61,7 @@ const UserRegister = () => {
 
     let jwtToken;
 
-    fetch("http://basetutorials.com:8080/api/user/register", {
+    fetch("http://localhost:8080/api/user/register", {
       method: "POST",
       headers: {
         Accept: "application/json",

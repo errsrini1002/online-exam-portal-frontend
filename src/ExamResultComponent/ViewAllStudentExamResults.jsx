@@ -24,7 +24,7 @@ const ViewAllStudentExamResults = () => {
 
   const retrieveAllExamResults = async () => {
     const response = await axios.get(
-      "http://basetutorials.com:8080/api/exam/result/fetch/all"
+      "http://localhost:8080/api/exam/result/fetch/all"
     );
     console.log(response.data);
     return response.data;

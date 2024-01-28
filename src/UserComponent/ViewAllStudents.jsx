@@ -20,7 +20,7 @@ const ViewAllStudents = () => {
 
   const retrieveAllUser = async () => {
     const response = await axios.get(
-      "http://basetutorials.com:8080/api/user/fetch/role-wise?role=Student"
+      "http://localhost:8080/api/user/fetch/role-wise?role=Student"
       // ,
       // {
       //   headers: {
@@ -33,7 +33,7 @@ const ViewAllStudents = () => {
   };
 
   const deleteUser = (userId, e) => {
-    fetch("http://basetutorials.com:8080/api/user/delete/user-id?userId=" + userId, {
+    fetch("http://localhost:8080/api/user/delete/user-id?userId=" + userId, {
       method: "DELETE",
       headers: {
         Accept: "application/json",

@@ -23,14 +23,14 @@ const ViewAllGrades = () => {
 
   const retrieveAllGrade = async () => {
     const response = await axios.get(
-      "http://basetutorials.com:8080/api/grade/fetch/all"
+      "http://localhost:8080/api/grade/fetch/all"
     );
     console.log(response.data);
     return response.data;
   };
 
   const deleteGrade = (gradeId, e) => {
-    fetch("http://basetutorials.com:8080/api/grade/delete?gradeId=" + gradeId, {
+    fetch("http://localhost:8080/api/grade/delete?gradeId=" + gradeId, {
       method: "DELETE",
       headers: {
         Accept: "application/json",

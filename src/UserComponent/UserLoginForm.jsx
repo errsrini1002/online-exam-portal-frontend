@@ -17,7 +17,7 @@ const UserLoginForm = () => {
   };
 
   const loginAction = (e) => {
-    fetch("http://basetutorials.com:8080/api/user/login", {
+    fetch("http://localhost:8080/api/user/login", {
       method: "POST",
       headers: {
         Accept: "application/json",

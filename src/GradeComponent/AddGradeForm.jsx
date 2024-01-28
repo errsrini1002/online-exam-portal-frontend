@@ -13,7 +13,7 @@ const AddGradeForm = () => {
   const saveGrade = (e) => {
     let data = { name, description };
 
-    fetch("http://basetutorials.com:8080/api/grade/add", {
+    fetch("http://localhost:8080/api/grade/add", {
       method: "POST",
       headers: {
         Accept: "application/json",

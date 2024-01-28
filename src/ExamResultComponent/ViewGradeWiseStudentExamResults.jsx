@@ -24,7 +24,7 @@ const ViewGradeWiseStudentExamResults = () => {
 
   const retrieveAllExamResults = async () => {
     const response = await axios.get(
-      "http://basetutorials.com:8080/api/exam/result/fetch/grade-wise?gradeId=" +
+      "http://localhost:8080/api/exam/result/fetch/grade-wise?gradeId=" +
         teacher.grade.id
     );
     console.log(response.data);

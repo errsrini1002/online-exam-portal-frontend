@@ -26,13 +26,13 @@ const ViewAllCourses = () => {
   const retrieveAllCourses = async (gradeId) => {
     if (gradeId === "all") {
       const response = await axios.get(
-        "http://basetutorials.com:8080/api/course/fetch/all"
+        "http://localhost:8080/api/course/fetch/all"
       );
       console.log(response.data);
       return response.data;
     } else {
       const response = await axios.get(
-        "http://basetutorials.com:8080/api/course/fetch/all/grade-wise?gradeId=" +
+        "http://localhost:8080/api/course/fetch/all/grade-wise?gradeId=" +
           gradeId
       );
       console.log(response.data);
