@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { config } from '../ConsantsFile/Constants';
+const url = config.url.BASE_URL;
 
 const AddExamQuestion = ({ exam }) => {
   var propsExam = exam;
@@ -75,7 +77,7 @@ const AddExamQuestion = ({ exam }) => {
         questionRequest.option4 +
         "]";
 
-      fetch("http://localhost:8080/api/exam/question/add", {
+      fetch(url + "/exam/question/add", {
         method: "POST",
         headers: {
           Accept: "application/json",

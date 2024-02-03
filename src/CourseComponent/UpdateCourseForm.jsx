@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import { config } from '../ConsantsFile/Constants';
+const url = config.url.BASE_URL;
 
 const UpdateCourseForm = () => {
   const location = useLocation();
@@ -30,7 +32,7 @@ const UpdateCourseForm = () => {
 
   const retrieveAllGrade = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/grade/fetch/all"
+      url + "/grade/fetch/all"
     );
     console.log(response.data);
     return response.data;
@@ -39,7 +41,7 @@ const UpdateCourseForm = () => {
   const saveCourse = (e) => {
     let data = { id, name, description, gradeId };
 
-    fetch("http://localhost:8080/api/course/update", {
+    fetch(url + "/course/update", {
       method: "PUT",
       headers: {
         Accept: "application/json",

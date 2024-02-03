@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { config } from '../ConsantsFile/Constants';
+const url = config.url.BASE_URL;
 
 const AddGradeForm = () => {
   const [name, setName] = useState("");
@@ -13,7 +15,7 @@ const AddGradeForm = () => {
   const saveGrade = (e) => {
     let data = { name, description };
 
-    fetch("http://localhost:8080/api/grade/add", {
+    fetch(url + "/grade/add", {
       method: "POST",
       headers: {
         Accept: "application/json",

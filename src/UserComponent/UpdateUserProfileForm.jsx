@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { config } from '../ConsantsFile/Constants';
+const url = config.url.BASE_URL;
 
 const UpdateUserProfileForm = () => {
   const employee = JSON.parse(sessionStorage.getItem("active-employee"));
@@ -52,7 +54,7 @@ const UpdateUserProfileForm = () => {
     formData.append("profilePic", selectedImage1);
 
     axios
-      .put("http://localhost:8080/api/user/profile/add", formData, {
+      .put(url + "/user/profile/add", formData, {
         headers: {
           Authorization: "Bearer " + employee_jwtToken, // Replace with your actual JWT token
         },

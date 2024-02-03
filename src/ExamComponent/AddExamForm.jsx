@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { config } from '../ConsantsFile/Constants';
+const url = config.url.BASE_URL;
 
 const AddExamForm = () => {
   const teacher = JSON.parse(sessionStorage.getItem("active-teacher"));
@@ -40,7 +42,7 @@ const AddExamForm = () => {
 
   const retrieveAllCourses = async (gradeId) => {
     const response = await axios.get(
-      "http://localhost:8080/api/course/fetch/all/grade-wise?gradeId=" + gradeId
+      url + "/course/fetch/all/grade-wise?gradeId=" + gradeId
     );
     console.log(response.data);
     return response.data;
@@ -50,7 +52,7 @@ const AddExamForm = () => {
     examRequest.startTime = new Date(startTime).getTime();
     examRequest.endTime = new Date(endTime).getTime();
 
-    fetch("http://localhost:8080/api/exam/add", {
+    fetch(url + "/exam/add", {
       method: "POST",
       headers: {
         Accept: "application/json",

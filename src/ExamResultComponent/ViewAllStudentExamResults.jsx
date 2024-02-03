@@ -3,6 +3,8 @@ import axios from "axios";
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { config } from '../ConsantsFile/Constants';
+const url = config.url.BASE_URL;
 
 const ViewAllStudentExamResults = () => {
   const [results, setResults] = useState([]);
@@ -24,7 +26,7 @@ const ViewAllStudentExamResults = () => {
 
   const retrieveAllExamResults = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/exam/result/fetch/all"
+      url + "/exam/result/fetch/all"
     );
     console.log(response.data);
     return response.data;

@@ -3,6 +3,8 @@ import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { config } from '../ConsantsFile/Constants';
+const url = config.url.BASE_URL;
 
 const ViewAllGrades = () => {
   const [allGrades, setAllGrades] = useState([]);
@@ -23,14 +25,14 @@ const ViewAllGrades = () => {
 
   const retrieveAllGrade = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/grade/fetch/all"
+      url + "/grade/fetch/all"
     );
     console.log(response.data);
     return response.data;
   };
 
   const deleteGrade = (gradeId, e) => {
-    fetch("http://localhost:8080/api/grade/delete?gradeId=" + gradeId, {
+    fetch(url + "/grade/delete?gradeId=" + gradeId, {
       method: "DELETE",
       headers: {
         Accept: "application/json",

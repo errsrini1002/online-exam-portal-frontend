@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import QuestionCard from "./QuestionCard";
+import { config } from '../ConsantsFile/Constants';
+const url = config.url.BASE_URL;
 
 const ViewStudentExamAnswers = (props) => {
   const [result, setResult] = useState(props.examResult);

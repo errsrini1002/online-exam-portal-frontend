@@ -3,6 +3,9 @@ import axios from "axios";
 import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 
+import { config } from '../ConsantsFile/Constants';
+const url = config.url.BASE_URL;
+
 const ViewAllStudents = () => {
   const [allStudent, setAllStudent] = useState([]);
   const admin_jwtToken = sessionStorage.getItem("admin-jwtToken");
@@ -20,7 +23,7 @@ const ViewAllStudents = () => {
 
   const retrieveAllUser = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/user/fetch/role-wise?role=Student"
+      url + "/user/fetch/role-wise?role=Student"
       // ,
       // {
       //   headers: {
@@ -33,7 +36,7 @@ const ViewAllStudents = () => {
   };
 
   const deleteUser = (userId, e) => {
-    fetch("http://localhost:8080/api/user/delete/user-id?userId=" + userId, {
+    fetch(url + "/user/delete/user-id?userId=" + userId, {
       method: "DELETE",
       headers: {
         Accept: "application/json",

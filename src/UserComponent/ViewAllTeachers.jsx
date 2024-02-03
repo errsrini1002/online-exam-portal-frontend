@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { config } from '../ConsantsFile/Constants';
+const url = config.url.BASE_URL;
 
 const ViewAllTeachers = () => {
   const [allTeacher, setAllTeacher] = useState([]);
@@ -20,7 +22,7 @@ const ViewAllTeachers = () => {
 
   const retrieveAllUser = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/user/fetch/role-wise?role=Teacher"
+      url + "/user/fetch/role-wise?role=Teacher"
       // ,
       // {
       //   headers: {
@@ -34,7 +36,7 @@ const ViewAllTeachers = () => {
 
   const deleteUser = (userId, e) => {
     fetch(
-      "http://localhost:8080/api/user/delete/user-id?userId=" + userId,
+      url + "/user/delete/user-id?userId=" + userId,
       {
         method: "DELETE",
         headers: {

@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import CountdownTimer from "./CountdownTimer";
+import { config } from '../ConsantsFile/Constants';
+const url = config.url.BASE_URL;
 
 const StudentExamAttempt = () => {
   const location = useLocation();
@@ -43,7 +45,7 @@ const StudentExamAttempt = () => {
     // Log the array of question objects with student answers
     console.log("Student Responses:", studentResponses);
 
-    fetch("http://localhost:8080/api/student/answer/add", {
+    fetch(url + "/student/answer/add", {
       method: "POST",
       headers: {
         Accept: "application/json",

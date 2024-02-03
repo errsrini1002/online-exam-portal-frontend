@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { config } from '../ConsantsFile/Constants';
+const url = config.url.BASE_URL;
 
 const AddCourseForm = () => {
   const [name, setName] = useState("");
@@ -27,7 +29,7 @@ const AddCourseForm = () => {
 
   const retrieveAllGrade = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/grade/fetch/all"
+      url + "/grade/fetch/all"
     );
     console.log(response.data);
     return response.data;
@@ -36,7 +38,7 @@ const AddCourseForm = () => {
   const saveCourse = (e) => {
     let data = { name, description, gradeId };
 
-    fetch("http://localhost:8080/api/course/add", {
+    fetch(url + "/course/add", {
       method: "POST",
       headers: {
         Accept: "application/json",

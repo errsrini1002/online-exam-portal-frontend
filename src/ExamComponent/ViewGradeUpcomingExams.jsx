@@ -3,6 +3,8 @@ import axios from "axios";
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { config } from '../ConsantsFile/Constants';
+const url = config.url.BASE_URL;
 
 const ViewGradeUpcomingExams = () => {
   const [exams, setExams] = useState([]);
@@ -24,7 +26,7 @@ const ViewGradeUpcomingExams = () => {
 
   const retrieveAllExams = async (gradeId) => {
     const response = await axios.get(
-      "http://localhost:8080/api/exam/fetch/upcoming/grade-wise?gradeId=" +
+      url + "/exam/fetch/upcoming/grade-wise?gradeId=" +
         teacher.grade.id +
         "&role="
     );
@@ -33,7 +35,7 @@ const ViewGradeUpcomingExams = () => {
   };
 
   const deleteExam = (examId, e) => {
-    fetch("http://localhost:8080/api/exam/delete?examId=" + examId, {
+    fetch(url + "/exam/delete?examId=" + examId, {
       method: "DELETE",
       headers: {
         Accept: "application/json",

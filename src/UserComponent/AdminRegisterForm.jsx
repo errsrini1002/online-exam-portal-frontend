@@ -2,6 +2,8 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { config } from '../ConsantsFile/Constants';
+const url = config.url.BASE_URL;
 
 const AdminRegisterForm = () => {
   let navigate = useNavigate();
@@ -14,7 +16,7 @@ const AdminRegisterForm = () => {
   };
 
   const registerAdmin = (e) => {
-    fetch("http://localhost:8080/api/user/admin/register", {
+    fetch(url + "/user/admin/register", {
       method: "POST",
       headers: {
         Accept: "application/json",
