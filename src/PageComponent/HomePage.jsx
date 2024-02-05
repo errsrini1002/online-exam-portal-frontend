@@ -4,33 +4,93 @@ import { Link } from "react-router-dom";
 import exam_1 from "../images/exam_1.png";
 import exam_2 from "../images/exam_2.png";
 
+
+
+
+<link href="path/to/tailwind.min.css" rel="stylesheet"></link>
+
 const HomePage = () => {
+
+  const data = [
+    { id: 1, class: 'Year 4', time: '6 PM to 7 PM', days: 'Monday,Wednesday,Saturday' },
+    { id: 2, class: 'Year 5', time: '5 PM to 6 PM', days: 'Monday,Thursday,Saturday' },
+    { id: 3, class: 'Year 6', time: '7 PM to 8 PM', days: 'Wednesday,Thursday,Saturday' },
+    { id: 4, class: 'GCSE', time: '6 PM to 7 PM', days: 'Monday,Tuesday' },
+  ];
+
+
+
+
+
+
   return (
     <div className="container-fluid mb-2">
-      <Carousel />
+  {/* <Carousel /> */}
 
       <div className="container mt-5">
         <div className="row">
           <div className="col-md-8 text-color">
-            <h1>Welcome to Online Exam Portal</h1>
+            <h1>Welcome to Base Tutorials </h1>
             <p>
-              Step into the future of academic excellence with our cutting-edge
-              Online Exam Portal, where educational empowerment meets
-              technological innovation. Effortlessly traverse your academic
-              journey with ease as you embark on secure assessments,
-              conveniently submit your exams, and effortlessly access your
-              results.
+              <h3>
+              Maximize your learning with our personalized sessions
+              </h3>
             </p>
+            <ul>
+
+<li>3 Weekly sessions, each lasting one hour.</li>
+<li>The syllabus is coverd topic by topic.</li>
+<li>Topic specific exams.</li>
+<li>Mock exams.</li>
+<li>Separate sessions for Year 4, Year 5, Year 6, Year 7, Year 8, Year 9, GCSE and A Level.</li>
+
+</ul>
+We offer both individual and group sessions. 
+
+
+
+
+<div className="overflow-x-auto">
+      <table className="table-auto min-w-full">
+        <thead>
+          <tr>
+            <th className="px-4 py-2">ID</th>
+            <th className="px-4 py-2">Class</th>
+            <th className="px-4 py-2">Time</th>
+            <th className="px-4 py-2">Days</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <tr key={item.id} className="bg-gray-100 border-b">
+              <td className="px-4 py-2">{item.id}</td>
+              <td className="px-4 py-2">{item.class}</td>
+              <td className="px-4 py-2">{item.time}</td>
+              <td className="px-4 py-2">{item.days}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+
+
+
+
+
+
+
+
+           
+
+
+
             <p>
-              Our user-friendly interface guarantees a seamless and intuitive
-              experience, providing you complete control over your academic
-              endeavors from the convenience of your own device. With robust
-              measures in place, rest assured that your personal information is
-              secure throughout every interaction. Join us on this digital
-              academic expedition and unlock a new era of examination
-              convenience and confidence. Welcome to a portal that redefines the
-              way you experience online exams, making learning and assessment
-              smarter, safer, and more accessible than ever before.
+            <p>
+              <h3>
+              Mock Exams 
+              </h3>
+            </p>
             </p>
             <Link to="/user/login" className="btn bg-color custom-bg-text">
               Get Started
@@ -58,8 +118,8 @@ const HomePage = () => {
             />
           </div>
           <div className="col-md-8 text-color">
-            <h1 className="ms-5">Simplify Your Exam Experience</h1>
-            <p className="ms-5">
+            <h1 className="ms-5">Simplify and Upgrade Your skills</h1>
+            {/* <p className="ms-5">
               Welcome to a hassle-free academic journey with our Online Exam
               Portal, where navigating assessments is a breeze. Say goodbye to
               complexities as you effortlessly manage your exams in a
@@ -74,7 +134,7 @@ const HomePage = () => {
               submissions to easy result retrieval, we've made online exams a
               straightforward and user-friendly experience, redefining how you
               approach assessments.
-            </p>
+            </p> */}
             <Link to="/user/login" className="btn bg-color custom-bg-text ms-5">
               Get Started
             </Link>
@@ -82,6 +142,10 @@ const HomePage = () => {
         </div>
       </div>
       <hr />
+
+    
+    
+
       <Footer />
     </div>
   );

@@ -3,7 +3,7 @@ const Footer = () => {
   return (
     <div>
       <div class="container my-5">
-        <footer class="text-center text-lg-start text-color">
+        {/* <footer class="text-center text-lg-start text-color">
           <div class="container-fluid p-4 pb-0">
             <section class="">
               <div class="row">
@@ -149,12 +149,12 @@ const Footer = () => {
           </div>
 
           <div class="text-center">
-            {/* © 2023 Copyright:
-            <a class="text-color-3" href="https://codewithmurad.com/">
-              codewithmurad.com
-            </a> */}
+        //    {© 2023 Copyright:
+         //   <a class="text-color-3" href="https://codewithmurad.com/">
+       //       codewithmurad.com
+       //     </a> }
           </div>
-        </footer>
+        </footer> */}
       </div>
     </div>
   );
