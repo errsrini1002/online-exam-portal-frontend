@@ -12,10 +12,12 @@ import exam_2 from "../images/exam_2.png";
 const HomePage = () => {
 
   const data = [
-    { id: 1, class: 'Year 4', time: '6 PM to 7 PM', days: 'Monday,Wednesday,Saturday' },
-    { id: 2, class: 'Year 5', time: '5 PM to 6 PM', days: 'Monday,Thursday,Saturday' },
-    { id: 3, class: 'Year 6', time: '7 PM to 8 PM', days: 'Wednesday,Thursday,Saturday' },
-    { id: 4, class: 'GCSE', time: '6 PM to 7 PM', days: 'Monday,Tuesday' },
+    { class: 'Year 4', time: '6 PM to 7 PM', days: 'MON,WED,SAT' },
+    { class: 'Year 5', time: '5 PM to 6 PM', days: 'MON,THUR,SAT' },
+    { class: 'Year 6', time: '7 PM to 8 PM', days: 'WED,THUR,SAT' },
+    { class: 'Year 7', time: '6 PM to 7 PM', days: 'TUE,FRI' },
+    { class: 'Year 8', time: '7 PM to 8 PM', days: 'WED,FRI' },
+    { class: 'GCSE', time: '6 PM to 7 PM', days: 'MON,TUE' },
   ];
 
 
@@ -32,6 +34,8 @@ const HomePage = () => {
           <div className="col-md-8 text-color">
             <h1>Welcome to Base Tutorials </h1>
             <p>
+              <br></br>
+           
               <h3>
               Maximize your learning with our personalized sessions
               </h3>
@@ -45,7 +49,9 @@ const HomePage = () => {
 <li>Separate sessions for Year 4, Year 5, Year 6, Year 7, Year 8, Year 9, GCSE and A Level.</li>
 
 </ul>
-We offer both individual and group sessions. 
+<br></br>
+
+<h3>We offer both individual and group sessions. </h3>
 
 
 
@@ -54,7 +60,7 @@ We offer both individual and group sessions.
       <table className="table-auto min-w-full">
         <thead>
           <tr>
-            <th className="px-4 py-2">ID</th>
+         
             <th className="px-4 py-2">Class</th>
             <th className="px-4 py-2">Time</th>
             <th className="px-4 py-2">Days</th>
@@ -63,7 +69,7 @@ We offer both individual and group sessions.
         <tbody>
           {data.map((item) => (
             <tr key={item.id} className="bg-gray-100 border-b">
-              <td className="px-4 py-2">{item.id}</td>
+              
               <td className="px-4 py-2">{item.class}</td>
               <td className="px-4 py-2">{item.time}</td>
               <td className="px-4 py-2">{item.days}</td>
@@ -76,18 +82,11 @@ We offer both individual and group sessions.
 
 
 
-
-
-
-
-
-           
-
-
-
             <p>
             <p>
               <h3>
+              <br></br>
+
               Mock Exams 
               </h3>
             </p>
@@ -118,6 +117,8 @@ We offer both individual and group sessions.
             />
           </div>
           <div className="col-md-8 text-color">
+          <br></br>
+
             <h1 className="ms-5">Simplify and Upgrade Your skills</h1>
             {/* <p className="ms-5">
               Welcome to a hassle-free academic journey with our Online Exam
