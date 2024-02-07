@@ -1,40 +1,31 @@
 import React, { useState, useEffect } from "react";
+  const CountdownTimer = ({ endTime }) => {
+    const [timeLeft, setTimeLeft] = useState(endTime * 60);
+    console.log('Duration : ', endTime) ; 
+    useEffect(() => {
+      const timer = setInterval(() => {
+        setTimeLeft(prevTimeLeft => prevTimeLeft - 1);
+      }, 1000);
+  
+      return () => clearInterval(timer);
+    }, []); // Empty dependency array so the effect runs only once when the component mounts
+  
+    const hours = Math.floor(timeLeft / 3600);
+    const minutes = Math.floor((timeLeft % 3600) / 60);
+    const seconds = timeLeft % 60;
 
-const CountdownTimer = ({ endTime }) => {
-  const calculateTimeRemaining = () => {
-    const now = new Date().getTime();
-    const timeRemaining = endTime - now;
+    return (
+      <div>
 
-    const hours = Math.floor(
-      (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+     <p>
+        
+        Time Remaining: {minutes}{" "}
+        minutes, {seconds} seconds
+       </p>
+        
+       
+      </div>
     );
-    const minutes = Math.floor(
-      (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
-    );
-    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-    return { hours, minutes, seconds };
   };
-
-  const [timeRemaining, setTimeRemaining] = useState(calculateTimeRemaining());
-
-  useEffect(() => {
-    const timerInterval = setInterval(() => {
-      setTimeRemaining(calculateTimeRemaining());
-    }, 1000);
-
-    // Clear the interval when the component unmounts
-    return () => clearInterval(timerInterval);
-  }, []);
-
-  return (
-    <div>
-      <p>
-        Time Remaining: {timeRemaining.hours} hours, {timeRemaining.minutes}{" "}
-        minutes, {timeRemaining.seconds} seconds
-      </p>
-    </div>
-  );
-};
-
+  
 export default CountdownTimer;

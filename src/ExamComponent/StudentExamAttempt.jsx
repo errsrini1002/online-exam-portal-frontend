@@ -10,6 +10,19 @@ const StudentExamAttempt = () => {
   const location = useLocation();
   const exam = location.state;
 
+  const [calculatedTime, setCalculatedTime] = useState(null);
+
+  const handleCalculateTime = () => {
+    const currentTime = new Date().getTime();
+   // const now = new Date().getTime();
+    //const newTime = new Date(currentTime.getTime() + 20 * 60000); // Adding 10 minutes in milliseconds
+    const newTime = currentTime + (20 * 60000) ; 
+
+    setCalculatedTime(newTime);
+    exam.endTime = newTime ; 
+  };
+
+
   let navigate = useNavigate();
 
   var questions = exam.questions;
@@ -122,7 +135,13 @@ const StudentExamAttempt = () => {
 
   useEffect(() => {
     console.log("Updated Exam in Child Component:", exam);
+    console.log('End Time starting ', exam.endTime); 
+    console.log('Duration of the Exam ', exam.duration); 
+    handleCalculateTime() ; 
+
+    console.log('End time calculated one : '+ calculatedTime); 
   }, [exam]);
+
 
   return (
     <div className="container-fluid mt-2">
@@ -139,7 +158,11 @@ const StudentExamAttempt = () => {
               <span className="me-5">
                 {exam.name + " - " + exam.grade.name + " - " + exam.course.name}
               </span>
-              <CountdownTimer endTime={exam.endTime} />
+              
+              {/* <CountdownTimer endTime={exam.endTime} /> */}
+
+              <CountdownTimer endTime={exam.duration} />
+
             </h5>
           </div>
           <div className="card-body text-color mt-3">

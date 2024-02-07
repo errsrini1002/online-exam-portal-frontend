@@ -13,6 +13,7 @@ const UserLoginForm = () => {
     emailId: "",
     password: "",
     role: "",
+    firstName : ""
   });
 
   const handleUserInput = (e) => {
@@ -143,16 +144,16 @@ const UserLoginForm = () => {
                 </div>
 
                 <div className="mb-3 text-color">
-                  <label for="emailId" class="form-label">
-                    <b>Email Id</b>
+                  <label for="firstName" class="form-label">
+                    <b>User Name</b>
                   </label>
                   <input
-                    type="email"
+                    type="firstName"
                     className="form-control"
-                    id="emailId"
-                    name="emailId"
+                    id="firstName"
+                    name="firstName"
                     onChange={handleUserInput}
-                    value={loginRequest.emailId}
+                    value={loginRequest.firstName}
                   />
                 </div>
                 <div className="mb-3 text-color">

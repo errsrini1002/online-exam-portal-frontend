@@ -10,6 +10,7 @@ const AddExamForm = () => {
 
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
+  const [duration,setDuration] = useState(""); 
   const [examRequest, setExamRequest] = useState({
     name: "",
     teacherId: teacher.id,
@@ -17,6 +18,7 @@ const AddExamForm = () => {
     gradeId: teacher.grade.id,
     startTime: "",
     endTime: "",
+    duration:"" 
   });
 
   const handleUserInput = (e) => {
@@ -51,6 +53,7 @@ const AddExamForm = () => {
   const saveExam = (e) => {
     examRequest.startTime = new Date(startTime).getTime();
     examRequest.endTime = new Date(endTime).getTime();
+    examRequest.duration = 10 ; 
 
     fetch(url + "/exam/add", {
       method: "POST",
