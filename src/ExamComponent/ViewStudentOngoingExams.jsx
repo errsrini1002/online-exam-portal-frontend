@@ -78,7 +78,7 @@ const ViewStudentOngoingExams = () => {
                 <tr>
                   <th scope="col">Exam</th>
                   <th scope="col">Course</th>
-                  <th scope="col">Exam Scheduled</th>
+                  {/* <th scope="col">Exam Scheduled</th> */}
                   <th scope="col">Action</th>
                 </tr>
               </thead>
@@ -92,13 +92,13 @@ const ViewStudentOngoingExams = () => {
                       <td>
                         <b>{exam.course.name}</b>
                       </td>
-                      <td>
+                      {/* <td>
                         <b>
                           {formatDateFromEpoch(exam.startTime) +
                             "-" +
                             formatDateFromEpoch(exam.endTime)}
                         </b>
-                      </td>
+                      </td> */}
                       <td>
                         {(() => {
                           if (exam.message === "Submitted") {

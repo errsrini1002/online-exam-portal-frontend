@@ -53,7 +53,7 @@ const AddExamForm = () => {
   const saveExam = (e) => {
     examRequest.startTime = new Date(startTime).getTime();
     examRequest.endTime = new Date(endTime).getTime();
-    examRequest.duration = 10 ; 
+  // examRequest.duration = duration ; 
 
     fetch(url + "/exam/add", {
       method: "POST",
@@ -196,6 +196,22 @@ const AddExamForm = () => {
                     className="form-control"
                     value={endTime}
                     onChange={(e) => setEndTime(e.target.value)}
+                  />
+                </div>
+
+
+                <div class="mb-3">
+                  <label for="title" class="form-label">
+                    <b>Duration in Mins</b>
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="title"
+                    name="duration"
+                    placeholder="enter duration.."
+                    onChange={handleUserInput}
+                    value={examRequest.duration}
                   />
                 </div>
 
