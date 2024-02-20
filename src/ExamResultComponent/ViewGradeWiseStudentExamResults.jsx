@@ -97,9 +97,9 @@ const ViewGradeWiseStudentExamResults = () => {
                       </td>
                       <td>
                         <b>
-                          {formatDateFromEpoch(result.exam.startTime) +
-                            "-" +
-                            formatDateFromEpoch(result.exam.endTime)}
+                          {formatDateFromEpoch(result.exam.startTime) 
+                          // +  "-" +  formatDateFromEpoch(result.exam.endTime)
+                          }
                         </b>
                       </td>
                       <td>

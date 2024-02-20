@@ -41,7 +41,7 @@ const HeaderStudent = () => {
         </Link>
       </li>
 
-      <li class="nav-item">
+      {/* <li class="nav-item">
         <Link
           to="/exam/student/grade-wise/previous"
           class="nav-link active"
@@ -49,7 +49,7 @@ const HeaderStudent = () => {
         >
           <b className="text-color">Previous Exams</b>
         </Link>
-      </li>
+      </li> */}
       <li class="nav-item">
         <Link
           to="/exam/student/grade-wise/upcoming"

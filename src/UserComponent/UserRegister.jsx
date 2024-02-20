@@ -284,7 +284,7 @@ const UserRegister = () => {
                     <b>Pincode</b>
                   </label>
                   <input
-                    type="number"
+                    type="text"
                     className="form-control"
                     id="pincode"
                     name="pincode"

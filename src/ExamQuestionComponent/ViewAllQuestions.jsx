@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import QuestionCard from "./QuestionCard";
+import QuestionSpellCard from "./QuestionSpellCard";
 
 const ViewAllQuestions = (props) => {
   const [exam, setExam] = useState(props.exam);
@@ -29,12 +30,28 @@ const ViewAllQuestions = (props) => {
           <div class="card-body text-color mt-3">
             <div className="col-md-12 mb-5">
               {exam.questions.map((question, index) => {
+
                 return (
-                  <QuestionCard
-                    question={question}
-                    key={question.id}
-                    serialNumber={index + 1}
-                  />
+
+                  <div>
+
+                    { ( exam.examType === 'Multiple' ) ? (
+                      <div><QuestionCard
+                        question={question}
+                        key={question.id}
+                        serialNumber={index + 1}
+                      /></div>
+                    ) : (
+                      <div><QuestionSpellCard
+                        question={question}
+                        key={question.id}
+                        serialNumber={index + 1}
+                      /></div>
+                    )}
+
+
+                  </div>
+
                 );
               })}
             </div>

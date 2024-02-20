@@ -37,7 +37,33 @@ const ViewStudentOngoingExams = () => {
 
   const attemptExam = (exam) => {
     console.warn(exam);
-    navigate("/exam/student/attempt", { state: exam });
+  // navigate("/exam/student/attempt", { state: exam });
+
+  {console.log('EXAM OBJECT')}
+  {console.log(exam)}; 
+
+  {console.log('Trying to fetch exam in Ongoing Exams ')}
+  {console.log(exam.examType)}; 
+
+ 
+  // Determine which view to render based on the variableValue
+  switch (exam.examType) {
+    case 'Multiple':
+      navigate("/exam/student/attempt", { state: exam });
+      break;
+    case 'Spell':
+      navigate("/exam/student/attemptSpell", { state: exam });
+      break;
+    case 'Blank':
+      navigate("/exam/student/attempt", { state: exam });
+      break;
+    case 'Match':
+      navigate("/exam/student/attemptSpell", { state: exam });
+      break;
+    default:
+      navigate("/exam/student/attempt", { state: exam });
+  }
+
   };
 
   const formatDateFromEpoch = (epochTime) => {
@@ -78,6 +104,9 @@ const ViewStudentOngoingExams = () => {
                 <tr>
                   <th scope="col">Exam</th>
                   <th scope="col">Course</th>
+                  <th scope="col">Duration (mins)</th>
+                  <th scope="col">Exam Type</th>
+                  
                   {/* <th scope="col">Exam Scheduled</th> */}
                   <th scope="col">Action</th>
                 </tr>
@@ -92,6 +121,9 @@ const ViewStudentOngoingExams = () => {
                       <td>
                         <b>{exam.course.name}</b>
                       </td>
+
+
+
                       {/* <td>
                         <b>
                           {formatDateFromEpoch(exam.startTime) +
@@ -99,6 +131,20 @@ const ViewStudentOngoingExams = () => {
                             formatDateFromEpoch(exam.endTime)}
                         </b>
                       </td> */}
+
+                      <td>
+                        <b>{exam.duration}</b>
+                      </td>
+                      
+                      <td>
+                        <b>{exam.examType}</b>
+                      </td>
+                      
+
+
+
+
+
                       <td>
                         {(() => {
                           if (exam.message === "Submitted") {

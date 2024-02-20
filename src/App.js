@@ -29,6 +29,7 @@ import ExamResult from "./ExamResultComponent/ExamResult";
 import ViewGradeWiseStudentExamResults from "./ExamResultComponent/ViewGradeWiseStudentExamResults";
 import ViewAllStudentExamResults from "./ExamResultComponent/ViewAllStudentExamResults";
 import ViewAllExams from "./ExamComponent/ViewAllExams";
+import StudentExamAttemptSpell from "./ExamComponent/StudentExamAttemptSpell";
 
 function App() {
   return (
@@ -61,6 +62,7 @@ function App() {
         />
         <Route path="/user/profile/detail" element={<UserProfile />} />
         <Route path="/exam/questions" element={<ViewExamQuestions />} />
+        
         <Route path="/exam/add" element={<AddExamForm />} />
         <Route
           path="/exam/grade-wise/upcoming"
@@ -87,6 +89,9 @@ function App() {
           element={<ViewStudentOngoingExams />}
         />
         <Route path="/exam/student/attempt" element={<StudentExamAttempt />} />
+        <Route path="/exam/student/attemptSpell" element={<StudentExamAttemptSpell />} />
+
+
         <Route
           path="/exam/student/result/all"
           element={<ViewStudentExamResults />}

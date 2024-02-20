@@ -18,7 +18,8 @@ const AddExamForm = () => {
     gradeId: teacher.grade.id,
     startTime: "",
     endTime: "",
-    duration:"" 
+    duration:"" ,
+    examType: "", 
   });
 
   const handleUserInput = (e) => {
@@ -79,6 +80,7 @@ const AddExamForm = () => {
 
             setTimeout(() => {
               navigate("/exam/questions", { state: res.exams[0] }); // sending added exam object
+            //  navigate("/exam/questions", { state: res.exams[0] }); // sending added exam object
             }, 2000); // Redirect after 3 seconds
           } else if (!res.success) {
             toast.error(res.responseMessage, {
@@ -214,6 +216,23 @@ const AddExamForm = () => {
                     value={examRequest.duration}
                   />
                 </div>
+                <div class="mb-3 text-color">
+                  <label for="examType" class="form-label">
+                    <b>Exam Type</b>
+                  </label>
+                  <select
+                    onChange={handleUserInput}
+                    className="form-control"
+                    name="examType"
+                  >
+                    <option value="0">Select Exam Type</option>
+                    <option value="Multiple"> Multiple </option>
+                    <option value="Spell"> Spell </option>
+                    <option value="Blanks"> Blanks </option>
+                    <option value="Blanks"> Match  </option>
+                  </select>
+                </div>
+
 
                 <div className="d-flex aligns-items-center justify-content-center mb-2">
                   <button
