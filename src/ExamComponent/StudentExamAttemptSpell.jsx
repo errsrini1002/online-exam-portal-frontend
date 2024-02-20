@@ -181,6 +181,13 @@ const StudentExamAttemptSpell = () => {
   }, [exam]);
 
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault(); // Prevent form submission
+    }
+  };
+
+
   return (
     <div className="container-fluid mt-2">
       <div className="form-card border-color">
@@ -222,7 +229,7 @@ const StudentExamAttemptSpell = () => {
                           </p>
                           {options
                             .replace(/[\[\]]/g, "")
-                            .split(",")
+                            .split("#")
                             .map((option, optionIndex) => (
                               <div key={optionIndex} className="form-check">
                                 {/* 
@@ -248,6 +255,7 @@ const StudentExamAttemptSpell = () => {
                                     key={id}                                  
                                   
                                     onChange={e => handleChange(id, e.target.value)}
+                                    onKeyDown={handleKeyDown}
 
                                   />
                                 </div>
