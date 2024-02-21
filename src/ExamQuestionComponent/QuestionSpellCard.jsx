@@ -6,7 +6,7 @@ const QuestionSpellCard = (props) => {
   function convertStringToArray(inputString) {
     return inputString
       .replace(/^\[|\]$/g, "") // Remove square brackets
-      .split(",")
+      .split("#")
       .map((item) => item.trim())
       .map((item) => item.replace(/"/g, "")); // Remove double quotes if present
   }
