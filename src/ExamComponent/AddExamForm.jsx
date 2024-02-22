@@ -20,6 +20,9 @@ const AddExamForm = () => {
     endTime: "",
     duration:"" ,
     examType: "", 
+    description: "", 
+    topic: "",
+    path:"" 
   });
 
   const handleUserInput = (e) => {
@@ -216,6 +219,56 @@ const AddExamForm = () => {
                     value={examRequest.duration}
                   />
                 </div>
+
+                <div class="mb-3">
+                  <label for="title" class="form-label">
+                    <b>Description</b>
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="title"
+                    name="description"
+                    placeholder="enter description.."
+                    onChange={handleUserInput}
+                    value={examRequest.description}
+                  />
+                </div>
+
+
+                <div class="mb-3">
+                  <label for="title" class="form-label">
+                    <b>path</b>
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="title"
+                    name="path"
+                    placeholder="enter filepath.."
+                    onChange={handleUserInput}
+                    value={examRequest.path}
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <label for="title" class="form-label">
+                    <b>Topic</b>
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="title"
+                    name="topic"
+                    placeholder="enter topic.."
+                    onChange={handleUserInput}
+                    value={examRequest.topic}
+                  />
+                </div>
+
+
+
+
                 <div class="mb-3 text-color">
                   <label for="examType" class="form-label">
                     <b>Exam Type</b>

@@ -30,6 +30,7 @@ import ViewGradeWiseStudentExamResults from "./ExamResultComponent/ViewGradeWise
 import ViewAllStudentExamResults from "./ExamResultComponent/ViewAllStudentExamResults";
 import ViewAllExams from "./ExamComponent/ViewAllExams";
 import StudentExamAttemptSpell from "./ExamComponent/StudentExamAttemptSpell";
+import StudentExamAttemptBlanks from "./ExamComponent/StudentExamAttemptBlanks";
 
 function App() {
   return (
@@ -85,12 +86,13 @@ function App() {
           element={<ViewStudentPreviousExams />}
         />
         <Route
+        // On clicking start Exam this is triggerd 
           path="/exam/student/grade-wise/ongoing"
           element={<ViewStudentOngoingExams />}
         />
         <Route path="/exam/student/attempt" element={<StudentExamAttempt />} />
         <Route path="/exam/student/attemptSpell" element={<StudentExamAttemptSpell />} />
-
+        <Route path="/exam/student/attemptBlanks" element={<StudentExamAttemptBlanks />} />
 
         <Route
           path="/exam/student/result/all"
