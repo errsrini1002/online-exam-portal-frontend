@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -12,10 +12,11 @@ const url = config.url.BASE_URL;
 
 
 
-
 const StudentExamAttemptBlanks = () => {
   const location = useLocation();
   const exam = location.state;
+  const inputRefs = useRef([]);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const [calculatedTime, setCalculatedTime] = useState(null);
   
@@ -63,17 +64,21 @@ const StudentExamAttemptBlanks = () => {
   
 
 
-  const handleChange = (questionId, value) => {
-    setAnswers((prevAnswers) => ({
-      ...prevAnswers,
-      [questionId]: value,
-    }));
+  const handleChange = (questionId, value,e) => {
+
+    e.preventDefault();
+    // setAnswers((prevAnswers) => ({
+    //   ...prevAnswers,
+    //   [questionId]: value,
+    // }));
+    // e.preventDefault();
+    
    // console.log('Handle on Change'); 
   //  console.log(questionId); 
    // console.log(value); 
 
-    console.log('Handle Answers'); 
-    console.log(answers); 
+  //  console.log('Handle Answers'); 
+ //   console.log(answers); 
 
    // console.log(answers); 
   };
@@ -81,6 +86,14 @@ const StudentExamAttemptBlanks = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+
+// Access input values using refs
+const inputValues = inputRefs.current.map(ref => ref.value);
+console.log('Input values:', inputValues);
+console.log('In submit Button'); 
+
+setFormSubmitted(true);
 
     // Create an array of question objects with student answers
     const studentResponses = questions.map(
@@ -91,7 +104,8 @@ const StudentExamAttemptBlanks = () => {
         marks,
         status,
        // studentAnswer: answers[id] !== undefined ? answers[id] : 4,
-        studentAnswer: answers[id],
+        studentAnswer : inputValues[index], 
+        //studentAnswer: answers[id],
       })
 
     
@@ -177,12 +191,13 @@ const StudentExamAttemptBlanks = () => {
   };
 
   useEffect(() => {
+    
     console.log("Updated Exam in Child Component:", exam);
     console.log('End Time starting ', exam.endTime);
     console.log('Duration of the Exam ', exam.duration);
 
     console.log('Description', exam.description); 
-    console.log('Description', exam.path); 
+    console.log('path:', exam.path); 
     handleCalculateTime();
 
     console.log('End time calculated one : ' + calculatedTime);
@@ -200,8 +215,7 @@ const StudentExamAttemptBlanks = () => {
 
     <div >
    
-   
-  
+ 
 
 
    <div className="container-fluid mt-2">
@@ -218,19 +232,13 @@ const StudentExamAttemptBlanks = () => {
               <span className="me-5">
                 {exam.name + " - " + exam.grade.name + " - " + exam.course.name}
               </span>
-
               {/* <CountdownTimer endTime={exam.endTime} /> */}
-
               <CountdownTimer endTime={exam.duration} />
 
             </h5>
           </div>
-
-          
-          <LeftPanel />
         
-
-
+          <LeftPanel />
           <div className="card-body text-color mt-3">
             <div className="col-md-12 mb-5">
               <div className="container mt-4 d-flex justify-content-center">
@@ -249,35 +257,13 @@ const StudentExamAttemptBlanks = () => {
                             <input
                                     type="text" spellCheck="false"
                                     class="form-control"
-                                    key={id}                                  
-                                  
-                                    onChange={e => handleChange(id, e.target.value)}
+                                    key={id}   
+                                    ref={el => inputRefs.current[index] = el}
+                                    disabled={formSubmitted} // Disable input after form submission
+                                  //  onChange={e => handleChange(id, e.target.value,e)}
                                     onKeyDown={handleKeyDown}
-
                                   />
-                                                     
-                            
                              </p>
-                            {/* <span className="text-color">
-                              {"[" + marks + " Marks]"}
-                            </span> */}
-                          
-                          
-                          {/* {options
-                            .replace(/[\[\]]/g, "")
-                            .split("#")
-                            .map((option, optionIndex) => (
-                              <div key={optionIndex} className="form-check">
-                              
-                                <div class="mb-3">
-                                  <label for="title" class="form-label">
-
-                                  </label>
-                                  
-                                </div>
-
-                              </div>
-                            ))} */}
                             </p>
                         </div>
                       )
