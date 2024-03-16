@@ -12,12 +12,12 @@ import exam_2 from "../images/exam_2.png";
 const HomePage = () => {
 
   const data = [
-    { class: 'Year 4', time: '6 PM to 7 PM', days: 'MON,WED,SAT' },
-    { class: 'Year 5', time: '5 PM to 6 PM', days: 'MON,THUR,SAT' },
-    { class: 'Year 6', time: '7 PM to 8 PM', days: 'WED,THUR,SAT' },
-    { class: 'Year 7', time: '6 PM to 7 PM', days: 'TUE,FRI' },
+    { class: 'Year 4', time: '6 PM to 7 PM', days: 'MON,TUE' },
+    { class: 'Year 5', time: '5 PM to 6 PM', days: 'MON,THUR' },
+    { class: 'Year 6', time: '7 PM to 8 PM', days: 'MON,THUR,SAT'},
+    { class: 'Year 7', time: '6 PM to 7 PM', days: 'WED,FRI' },
     { class: 'Year 8', time: '7 PM to 8 PM', days: 'WED,FRI' },
-    { class: 'GCSE', time: '6 PM to 7 PM', days: 'MON,TUE' },
+    { class: 'GCSE', time: '6 PM to 7 PM', days: 'THUR,FRI' },
   ];
 
 
