@@ -5,6 +5,7 @@ import QuestionSpellCard from "./QuestionSpellCard";
 
 const ViewAllQuestions = (props) => {
   const [exam, setExam] = useState(props.exam);
+  
 
   console.warn(exam);
 

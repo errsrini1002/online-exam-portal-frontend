@@ -2,6 +2,9 @@ import { useState } from "react";
 
 const QuestionSpellCard = (props) => {
   const [question, setQuestion] = useState(props.question);
+  const[studentAnswer, setStudentAnswer] = useState(props.studentAnswer) ; 
+
+
 
   function convertStringToArray(inputString) {
     return inputString
@@ -57,8 +60,9 @@ const QuestionSpellCard = (props) => {
           <span className="text-success">
             
             {
-           
-              <div> <span className="text-success">Student Answer : </span>{ question.studentAnswer} </div>
+               
+             <div> <span className="text-success">Student Answer : </span>{ question.studentAnswer} </div>
+             
             }
               
           </span>

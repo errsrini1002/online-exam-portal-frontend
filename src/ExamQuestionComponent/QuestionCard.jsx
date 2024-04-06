@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const QuestionCard = (props) => {
   const [question, setQuestion] = useState(props.question);
+  const[studentAnswer, setStudentAnswer] = useState(props.studentAnswer) ; 
 
   function convertStringToArray(inputString) {
     return inputString
@@ -67,7 +68,8 @@ const QuestionCard = (props) => {
                 <b className="col">
                   <span className="text-color">
                     {"Student Answer: " +
-                      convertStringToArray(question.options)[question.answer]}
+                    convertStringToArray(studentAnswer.studentAnswer)} 
+                       
                   </span>
                 </b>
               );

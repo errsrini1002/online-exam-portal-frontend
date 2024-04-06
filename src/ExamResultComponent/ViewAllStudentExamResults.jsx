@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
@@ -8,6 +9,7 @@ const url = config.url.BASE_URL;
 
 const ViewAllStudentExamResults = () => {
   const [results, setResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const teacher_jwtToken = sessionStorage.getItem("teacher-jwtToken");
   const teacher = JSON.parse(sessionStorage.getItem("active-teacher"));
 
@@ -32,8 +34,8 @@ const ViewAllStudentExamResults = () => {
     return response.data;
   };
 
-  const viewExamResult = (resullt) => {
-    navigate("/exam/student/result", { state: resullt });
+  const viewExamResult = (result) => {
+    navigate("/exam/student/result", { state: result });
   };
 
   const formatDateFromEpoch = (epochTime) => {
@@ -43,31 +45,30 @@ const ViewAllStudentExamResults = () => {
     return formattedDate;
   };
 
-  // sending added exam object
+  // Filtered results based on search term
+  const filteredResults = results.filter(result =>
+    result.exam.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    result.exam.grade.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    result.exam.course.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    result.student.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    result.student.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    result.resultStatus.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="mt-3">
-      <div
-        className="card form-card ms-2 me-2 mb-5 shadow-lg"
-        style={{
-          height: "45rem",
-        }}
-      >
-        <div
-          className="card-header custom-bg-text text-center bg-color"
-          style={{
-            borderRadius: "1em",
-            height: "50px",
-          }}
-        >
+      <div className="card form-card ms-2 me-2 mb-5 shadow-lg" style={{ height: "45rem" }}>
+        <div className="card-header custom-bg-text text-center bg-color" style={{ borderRadius: "1em", height: "50px" }}>
           <h2>Students Exam Results</h2>
         </div>
-        <div
-          className="card-body"
-          style={{
-            overflowY: "auto",
-          }}
-        >
+        <div className="card-body" style={{ overflowY: "auto" }}>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="form-control mb-2"
+          />
           <div className="table-responsive">
             <table className="table table-hover text-color text-center">
               <thead className="table-bordered border-color bg-color custom-bg-text">
@@ -82,68 +83,28 @@ const ViewAllStudentExamResults = () => {
                 </tr>
               </thead>
               <tbody>
-                {results.map((result) => {
-                  return (
-                    <tr>
-                      <td>
-                        <b>{result.exam.name}</b>
-                      </td>
-                      <td>
-                        <b>{result.exam.grade.name}</b>
-                      </td>
-                      <td>
-                        <b>{result.exam.course.name}</b>
-                      </td>
-
-                      <td>
-                        <b>
-                          {formatDateFromEpoch(result.exam.startTime)
-                          //  +   "-" +       formatDateFromEpoch(result.exam.endTime)
-                            }
-
-                        </b>
-                      </td>
-                      <td>
-                        <b>
-                          {result.student.firstName +
-                            " " +
-                            result.student.lastName}
-                        </b>
-                      </td>
-                      <td>
-                        {(() => {
-                          if (result.resultStatus === "Pass") {
-                            return (
-                              <div>
-                                <b className="text-success">
-                                  {result.resultStatus}
-                                </b>
-                              </div>
-                            );
-                          } else {
-                            return (
-                              <div>
-                                <b className="text-danger">
-                                  {result.resultStatus}
-                                </b>
-                              </div>
-                            );
-                          }
-                        })()}
-                      </td>
-                      <td>
-                        <div>
-                          <button
-                            onClick={(e) => viewExamResult(result)}
-                            className="btn btn-sm bg-color custom-bg-text ms-2"
-                          >
-                            View Result
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
+                {filteredResults.map((result, index) => (
+                  <tr key={index}>
+                    <td><b>{result.exam.name}</b></td>
+                    <td><b>{result.exam.grade.name}</b></td>
+                    <td><b>{result.exam.course.name}</b></td>
+                    <td><b>{formatDateFromEpoch(result.exam.startTime)}</b></td>
+                    <td><b>{result.student.firstName} {result.student.lastName}</b></td>
+                    <td>
+                      <b className={result.resultStatus === "Pass" ? "text-success" : "text-danger"}>
+                        {result.resultStatus}
+                      </b>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => viewExamResult(result)}
+                        className="btn btn-sm bg-color custom-bg-text ms-2"
+                      >
+                        View Result
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -154,3 +115,4 @@ const ViewAllStudentExamResults = () => {
 };
 
 export default ViewAllStudentExamResults;
+
