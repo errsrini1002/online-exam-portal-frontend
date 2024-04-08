@@ -68,7 +68,8 @@ const QuestionCard = (props) => {
                 <b className="col">
                   <span className="text-color">
                     {"Student Answer: " +
-                    convertStringToArray(studentAnswer.studentAnswer)} 
+
+                    convertStringToArray(question.options)[question.answer]}
                        
                   </span>
                 </b>
