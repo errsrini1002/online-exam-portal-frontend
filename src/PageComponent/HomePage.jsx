@@ -87,7 +87,7 @@ const HomePage = () => {
               <h3>
               <br></br>
 
-              Mock Exams 
+              11 plus Mock Exams 
               </h3>
             </p>
             </p>
