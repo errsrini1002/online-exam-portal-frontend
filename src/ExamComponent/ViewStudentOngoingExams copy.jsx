@@ -8,7 +8,6 @@ const url = config.url.BASE_URL;
 
 const ViewStudentOngoingExams = () => {
   const [exams, setExams] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
   const student_jwtToken = sessionStorage.getItem("student-jwtToken");
   const student = JSON.parse(sessionStorage.getItem("active-student"));
 
@@ -38,31 +37,33 @@ const ViewStudentOngoingExams = () => {
 
   const attemptExam = (exam) => {
     console.warn(exam);
-    // navigate("/exam/student/attempt", { state: exam });
+  // navigate("/exam/student/attempt", { state: exam });
 
-    console.log('EXAM OBJECT');
-    console.log(exam);
+  {console.log('EXAM OBJECT')}
+  {console.log(exam)}; 
 
-    console.log('Trying to fetch exam in Ongoing Exams ');
-    console.log(exam.examType); 
+  {console.log('Trying to fetch exam in Ongoing Exams ')}
+  {console.log(exam.examType)}; 
 
-    // Determine which view to render based on the variableValue
-    switch (exam.examType) {
-      case 'Multiple':
-        navigate("/exam/student/attempt", { state: exam });
-        break;
-      case 'Spell':
-        navigate("/exam/student/attemptSpell", { state: exam });
-        break;
-      case 'Blanks':
-        navigate("/exam/student/attemptBlanks", { state: exam });
-        break;
-      case 'Match':
-        navigate("/exam/student/attemptSpell", { state: exam });
-        break;
-      default:
-        navigate("/exam/student/attempt", { state: exam });
-    }
+ 
+  // Determine which view to render based on the variableValue
+  switch (exam.examType) {
+    case 'Multiple':
+      navigate("/exam/student/attempt", { state: exam });
+      break;
+    case 'Spell':
+      navigate("/exam/student/attemptSpell", { state: exam });
+      break;
+    case 'Blanks':
+      navigate("/exam/student/attemptBlanks", { state: exam });
+      break;
+    case 'Match':
+      navigate("/exam/student/attemptSpell", { state: exam });
+      break;
+    default:
+      navigate("/exam/student/attempt", { state: exam });
+  }
+
   };
 
   const formatDateFromEpoch = (epochTime) => {
@@ -72,18 +73,7 @@ const ViewStudentOngoingExams = () => {
     return formattedDate;
   };
 
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-    
-  };
-
-  // Filter exams based on search term
-  const filteredExams = exams.filter((exam) =>
-    exam.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    exam.course.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    exam.duration.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    exam.examType.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // sending added exam object
 
   return (
     <div className="mt-3">
@@ -102,14 +92,12 @@ const ViewStudentOngoingExams = () => {
         >
           <h2>Ongoing Exams</h2>
         </div>
-        <div className="card-body" style={{ overflowY: "auto" }}>
-          <input
-            type="text"
-            placeholder="Search exams"
-            value={searchTerm}
-            onChange={handleSearchChange}
-            className="form-control mb-3"
-          />
+        <div
+          className="card-body"
+          style={{
+            overflowY: "auto",
+          }}
+        >
           <div className="table-responsive">
             <table className="table table-hover text-color text-center">
               <thead className="table-bordered border-color bg-color custom-bg-text">
@@ -118,25 +106,45 @@ const ViewStudentOngoingExams = () => {
                   <th scope="col">Course</th>
                   <th scope="col">Duration (mins)</th>
                   <th scope="col">Exam Type</th>
+                  
+                  {/* <th scope="col">Exam Scheduled</th> */}
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-                {filteredExams.map((exam) => {
+                {exams.map((exam) => {
                   return (
-                    <tr key={exam.id}>
+                    <tr>
                       <td>
                         <b>{exam.name}</b>
                       </td>
                       <td>
                         <b>{exam.course.name}</b>
                       </td>
+
+
+
+                      {/* <td>
+                        <b>
+                          {formatDateFromEpoch(exam.startTime) +
+                            "-" +
+                            formatDateFromEpoch(exam.endTime)}
+                        </b>
+                      </td> */}
+
                       <td>
                         <b>{exam.duration}</b>
                       </td>
+                      
                       <td>
                         <b>{exam.examType}</b>
                       </td>
+                      
+
+
+
+
+
                       <td>
                         {(() => {
                           if (exam.message === "Submitted") {

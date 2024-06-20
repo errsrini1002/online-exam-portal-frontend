@@ -18,6 +18,9 @@ const StudentExamAttemptBlanks = () => {
   const inputRefs = useRef([]);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
+  // State to control the visibility of the button
+const [isButtonVisible, setIsButtonVisible] = useState(true);
+
   const [calculatedTime, setCalculatedTime] = useState(null);
   
   const handleCalculateTime = () => {
@@ -86,7 +89,7 @@ const StudentExamAttemptBlanks = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setIsButtonVisible(false);
 
 // Access input values using refs
 const inputValues = inputRefs.current.map(ref => ref.value);
@@ -270,12 +273,14 @@ setFormSubmitted(true);
                     )}
                   </div>
                   <div className="container mt-4 d-flex justify-content-center">
+                  {isButtonVisible && (
                     <button
                       type="submit"
                       className="btn bg-color custom-bg-text"
                     >
                       Submit Exam
                     </button>
+                          )}
                   </div>
                 </form>
               </div>

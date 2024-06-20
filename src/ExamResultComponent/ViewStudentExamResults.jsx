@@ -8,6 +8,7 @@ const url = config.url.BASE_URL;
 
 const ViewStudentExamResults = () => {
   const [results, setResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const student_jwtToken = sessionStorage.getItem("student-jwtToken");
   const student = JSON.parse(sessionStorage.getItem("active-student"));
 
@@ -44,6 +45,20 @@ const ViewStudentExamResults = () => {
     return formattedDate;
   };
 
+
+
+   // Filtered results based on search term
+   const filteredResults = results.filter(result =>
+    result.exam.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    result.exam.grade.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    result.exam.course.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    result.student.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    result.student.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    result.resultStatus.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+
+
   // sending added exam object
 
   return (
@@ -63,12 +78,14 @@ const ViewStudentExamResults = () => {
         >
           <h2>Exam Results</h2>
         </div>
-        <div
-          className="card-body"
-          style={{
-            overflowY: "auto",
-          }}
-        >
+       <div className="card-body" style={{ overflowY: "auto" }}>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="form-control mb-2"
+          />
           <div className="table-responsive">
             <table className="table table-hover text-color text-center">
               <thead className="table-bordered border-color bg-color custom-bg-text">
@@ -76,12 +93,39 @@ const ViewStudentExamResults = () => {
                   <th scope="col">Exam</th>
                   <th scope="col">Grade</th>
                   <th scope="col">Course</th>
-                  <th scope="col">Timing</th>
+                  <th scope="col">Submitted Time</th>
                   <th scope="col">Result</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
+
               <tbody>
+                {filteredResults.map((result, index) => (
+                  <tr key={index}>
+                    <td><b>{result.exam.name}</b></td>
+                    <td><b>{result.exam.grade.name}</b></td>
+                    <td><b>{result.exam.course.name}</b></td>
+                    <td><b>{ formatDateFromEpoch(result.dateTime)}</b></td>
+                    {/* <td><b>{result.student.firstName} {result.student.lastName}</b></td> */}
+                    <td>
+                      <b className={result.resultStatus === "Pass" ? "text-success" : "text-danger"}>
+                        {result.resultStatus}
+                      </b>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => viewExamResult(result)}
+                        className="btn btn-sm bg-color custom-bg-text ms-2"
+                      >
+                        View Result
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+
+
+              {/* <tbody>
                 {results.map((result) => {
                   return (
                     <tr>
@@ -96,7 +140,8 @@ const ViewStudentExamResults = () => {
                       </td>
                       <td>
                         <b>
-                          {formatDateFromEpoch(result.exam.startTime)
+                       {formatDateFromEpoch(result.dateTime)
+                            // {formatDateFromEpoch(result.exam.startTime)
                           //  +   "-" +   formatDateFromEpoch(result.exam.endTime)
                            }
                         </b>
@@ -135,7 +180,7 @@ const ViewStudentExamResults = () => {
                     </tr>
                   );
                 })}
-              </tbody>
+              </tbody> */}
             </table>
           </div>
         </div>

@@ -12,6 +12,10 @@ const StudentExamAttemptSpell = () => {
 
   const [calculatedTime, setCalculatedTime] = useState(null);
 
+// State to control the visibility of the button
+const [isButtonVisible, setIsButtonVisible] = useState(true);
+
+
   const handleCalculateTime = () => {
     const currentTime = new Date().getTime();
     // const now = new Date().getTime();
@@ -76,7 +80,7 @@ const StudentExamAttemptSpell = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setIsButtonVisible(false);
     // Create an array of question objects with student answers
     const studentResponses = questions.map(
       ({ id, question, options, marks, status}, index) => ({
@@ -89,7 +93,7 @@ const StudentExamAttemptSpell = () => {
         studentAnswer: answers[id],
       })
 
-    
+     
     );
 
     // Log the array of question objects with student answers
@@ -271,12 +275,14 @@ const StudentExamAttemptSpell = () => {
                     )}
                   </div>
                   <div className="container mt-4 d-flex justify-content-center">
+                  {isButtonVisible && (
                     <button
                       type="submit"
                       className="btn bg-color custom-bg-text"
                     >
                       Submit Exam
                     </button>
+                    )}
                   </div>
                 </form>
               </div>
