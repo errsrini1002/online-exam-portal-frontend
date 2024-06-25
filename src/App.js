@@ -31,6 +31,8 @@ import ViewAllStudentExamResults from "./ExamResultComponent/ViewAllStudentExamR
 import ViewAllExams from "./ExamComponent/ViewAllExams";
 import StudentExamAttemptSpell from "./ExamComponent/StudentExamAttemptSpell";
 import StudentExamAttemptBlanks from "./ExamComponent/StudentExamAttemptBlanks";
+import AddAttendance from "./AttendanceComponent/AddAttendance";
+import AttendanceReport from "./AttendanceComponent/AttendanceReport";
 
 function App() {
   return (
@@ -51,6 +53,8 @@ function App() {
         <Route path="/admin/course/add" element={<AddCourseForm />} />
         <Route path="/admin/course/all" element={<ViewAllCourses />} />
         <Route path="/admin/course/update" element={<UpdateCourseForm />} />
+        <Route path="/admin/attendance/add" element={<AddAttendance />} />
+        <Route path="/admin/attendance/details" element={<AttendanceReport />} />
         <Route
           path="/admin/grade/:gradeId/course/"
           element={<ViewAllCourses />}
