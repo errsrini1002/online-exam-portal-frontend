@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import { config } from '../ConsantsFile/Constants';
 import { fetchStudents } from './data';
 const url = config.url.BASE_URL;
 
-// src/components/AttendanceForm.js
-
-
 const admin_jwtToken = sessionStorage.getItem("admin-jwtToken");
+
+// ADD ATTENDANCE 
 
 const AttendanceForm = () => {
     const [year, setYear] = useState('');
@@ -16,172 +14,190 @@ const AttendanceForm = () => {
     const [time, setTime] = useState('');
     const [topic, setTopic] = useState('');
 
-      const [gradeId, setGradeId] = useState('');
-      const [students, setStudents] = useState([]);
-      const [attendance, setAttendance] = useState({});
-  
-       
+    const [gradeId, setGradeId] = useState('');
+    const [studentId, setStudentId] = useState('');
+    const [students, setStudents] = useState([]);
+    const [attendance, setAttendance] = useState({});
 
-      useEffect(() => {
+    const [isButtonVisible, setIsButtonVisible] = useState(true);
+
+    useEffect(() => {
         const loadStudents = async () => {
-          if (gradeId) {
-            const students = await fetchStudents(gradeId);
-            setStudents(students);
-            const initialAttendance = students.reduce((acc, student) => {
-              acc[student.id] = 'present';
-              return acc;
-            }, {});
-            setAttendance(initialAttendance);
-          }
+            if (gradeId) {
+                const students = await fetchStudents(gradeId);
+                setStudents(students);
+                const initialAttendance = students.reduce((acc, student) => {
+                    acc[student.id] = 'present';
+                    return acc;
+                }, {});
+                setAttendance(initialAttendance);
+            }
         };
         loadStudents();
-      }, [gradeId]);
+    }, [gradeId]);
 
+    const handleGradeChange = (event) => {
+        setGradeId(event.target.value);
+        setStudentId(''); // Reset individual student selection
+    };
 
-      const handleGradeChange = (event) => {
-          setGradeId(event.target.value);
-      };
-
-
-
+    const handleStudentKeyPress = async (event) => {
+        if (event.key === 'Enter') {
+            const studentId = event.target.value;
+            if (studentId) {
+                const student = await fetchStudents(studentId);
+                if (student.length > 0) {
+                    setStudents(student);
+                    const initialAttendance = student.reduce((acc, student) => {
+                        acc[student.id] = 'present';
+                        return acc;
+                    }, {});
+                    setAttendance(initialAttendance);
+                } else {
+                    toast.error("Student not found");
+                }
+            }
+        }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+ //       setIsButtonVisible(false);
 
         students.forEach(student => {
-            const attendance = {
+            const attendanceData = {
                 date: date,
-                present: student.present,
+                present: attendance[student.id],
                 studentId: student.id,
                 time: time,
-                year: gradeId,
-                name : student.name, 
+                year: gradeId || student.year,
+                name: student.name,
                 topic: topic,
-                             
-
             };
 
-           console.log(attendance); 
-           
-              fetch( url + '/attendance/add', {
+            console.log(attendanceData);
+
+            fetch(url + '/attendance/add', {
                 method: 'POST',
                 headers: {
-                  Accept: "application/json",
-                "Content-Type": "application/json",
-              //  Authorization: "Bearer " + admin_jwtToken,
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    // Authorization: "Bearer " + admin_jwtToken,
                 },
-                body: JSON.stringify(attendance),
-              })
-              .then(response => response.json())
-              .then(data => console.log('Success:', data))
-              .catch((error) => console.error('Error:', error));
-            });
- 
+                body: JSON.stringify(attendanceData),
+            })
+                .then(response => response.json())
+                .then(data => console.log('Success:', data))
+                .catch((error) => console.error('Error:', error));
+        });
     };
 
-    const handleStudentChange = (id, present) => {
-        setStudents(students.map(student => student.id === id ? { ...student, present: present } : student));
+    const handleAttendanceChange = (id, present) => {
+        setAttendance({
+            ...attendance,
+            [id]: present
+        });
     };
 
-     return (
-      
-       <div>
-        <div class="mt-2 d-flex aligns-items-center justify-content-center">
-           <div class="form-card border-color" style={{ width: "25rem" }}>
-            <div className="container-fluid">
-               <div
-                 className="card-header bg-color custom-bg-text mt-2 d-flex justify-content-center align-items-center"
-                 style={{
-                   borderRadius: "1em",
-                   height: "38px",
-                 }}
-               >
-                 <h5 class="card-title">Add Attendance</h5>
-              </div>
-               <div class="card-body text-color mt-3">
-                 <form>
-                   <div class="mb-3">
-                   
-                   <label>Year:</label>
-                 {/* <select value={year} onChange={(e) => setYear(e.target.value)}> */}
-                 <select value={gradeId} onChange={handleGradeChange}>
-                     <option value="">Select Year</option>
-                    <option value="Year 4">Year 4</option>
-                    <option value="Year 4M">Year 4M</option>
-                     <option value="Year 5">Year 5</option>
-                     <option value="Year 5M">Year 5M</option>
-                   <option value="Year 6">Year 6</option>
-                   <option value="Year 7">Year 7</option>
-                   <option value="Year 8">Year 8</option>
-                   <option value="Year 9">Year 9</option>
-                    <option value="GCSE(10)">GCSE(10)</option>
-                    <option value="GCSE(11)">GCSE(11)</option>
+    return (
+        <div>
+            <div className="mt-2 d-flex aligns-items-center justify-content-center">
+                <div className="form-card border-color" style={{ width: "25rem" }}>
+                    <div className="container-fluid">
+                        <div
+                            className="card-header bg-color custom-bg-text mt-2 d-flex justify-content-center align-items-center"
+                            style={{
+                                borderRadius: "1em",
+                                height: "38px",
+                            }}
+                        >
+                            <h5 className="card-title">Add Attendance</h5>
+                        </div>
+                        <div className="card-body text-color mt-3">
+                            <form>
+                                <div className="mb-3">
+                                    <label>Year:</label>
+                                    <select value={gradeId} onChange={handleGradeChange}>
+                                        <option value="">Select Year</option>
+                                        <option value="Year 4">Year 4</option>
+                                        <option value="Year 4M">Year 4M</option>
+                                        <option value="Year 5">Year 5</option>
+                                        <option value="Year 5M">Year 5M</option>
+                                        <option value="Year 6">Year 6</option>
+                                        <option value="Year 7">Year 7</option>
+                                        <option value="Year 8">Year 8</option>
+                                        <option value="Year 9">Year 9</option>x
+                                        <option value="GCSE(10)">GCSE(10)</option>
+                                        <option value="GCSE(11)">GCSE(11)</option>
+                                    </select>
+                                </div>
 
+                                <div className="mb-3">
+                                    <label>Student ID:</label>
+                                    <input
+                                        type="text"
+                                        value={studentId}
+                                        onChange={(e) => setStudentId(e.target.value)}
+                                        onKeyPress={handleStudentKeyPress}
+                                        placeholder="Enter Student ID and press Enter"
+                                    />
+                                </div>
 
+                                <div className="mb-3">
+                                    <label>Date:</label>
+                                    <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+                                </div>
 
-                </select>
+                                <div className="mb-3">
+                                    <label>Time:</label>
+                                    <input type="time" value={time} onChange={(e) => setTime(e.target.value)} />
+                                </div>
 
-                   </div>
-                   <div class="mb-3">
-                 <label>Date:</label>
-                 <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-                   
-                   </div>
-  
-                   <div className="mb-3">
-                   <label>Time:</label>
-                 <input type="time" value={time} onChange={(e) => setTime(e.target.value)} />
-  
-                   
-                 </div>
+                                <label htmlFor="topic" className="form-label">
+                                    <b>Topic</b>
+                                </label>
+                                <textarea
+                                    className="form-control"
+                                    id="topic"
+                                    rows="3"
+                                    placeholder="Enter description.."
+                                    onChange={(e) => setTopic(e.target.value)}
+                                    value={topic}
+                                />
+                                <div></div>
 
-                 <label for="description" class="form-label">
-                    <b>Topic</b>
-                  </label>
-                  <textarea
-                    class="form-control"
-                    id="topic"
-                    rows="3"
-                    placeholder="enter description.."
-                    onChange={(e) => {
-                      setTopic(e.target.value);
-                    }}
-                    value={topic}
-                  />
-                <div></div>
+                                <div>
+                                    <label><h4>Students:</h4></label>
+                                    {students.map(student => (
+                                        <div key={student.id}>
+                                            <span>{student.name}</span>
+                                            <select value={attendance[student.id]} onChange={(e) => handleAttendanceChange(student.id, e.target.value === 'true')}>
+                                                <option value="false">Absent</option>
+                                                <option value="true">Present</option>
+                                            </select>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="container mt-4 d-flex justify-content-center">
+                                    {isButtonVisible && (
+                                        <button
+                                            type="submit"
+                                            onClick={handleSubmit}
+                                            className="btn bg-color custom-bg-text"
+                                        >
+                                            Submit
+                                        </button>
+                                    )}
+                                </div>
 
-                   <div>
-                    <label><h4> Students: </h4></label>
-                       {students.map(student => (
-                         <div key={student.id}>
-                         <span>{student.name}</span>
-                        <select value={student.present} onChange={(e) => handleStudentChange(student.id, e.target.value === 'true')}>
-                             <option value="false">Absent</option>
-                           <option value="true">Present</option>
-                       </select>
-                          </div>
-                     ))}
-                       </div>
-  
-                   <div className="d-flex aligns-items-center justify-content-center mb-2">
-   
-                     <button
-                       type="submit"
-                     onClick={handleSubmit}
-                       class="btn bg-color custom-bg-text"
-                     >
-                       Submit
-                     </button>
-                   </div>
-  
-                  <ToastContainer />
-                 </form>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
+                                <ToastContainer />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
-
 };
+
 export default AttendanceForm;
