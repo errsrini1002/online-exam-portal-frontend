@@ -18,13 +18,13 @@ const studentsData = [
     { id: 23, name: 'Manu', year: 'Year 6' },
     { id: 26, name: 'Sri', year: 'Year 8' },
 
-    { id: 27, name: 'Kanav', year: 'Year 6' },
-    { id: 28, name: 'Advik', year: 'Year 6' },
-    { id: 29, name: 'Deetya', year: 'Year 8' },
+    { id: 27, name: 'Kanav', year: 'Year 4M' },
+    { id: 28, name: 'Advik', year: 'Year 6M' },
+    { id: 29, name: 'Deetya', year: 'Year 4' },
 
     { id: 30, name: 'Ryan', year: 'Year 6' },
-    { id: 33, name: 'Aaradya', year: 'Year 5' },
-    { id: 34, name: 'Roshini', year: 'Year 5' },
+    { id: 33, name: 'Aaradya', year: 'Year 5M' },
+    { id: 34, name: 'Roshini', year: 'Year 5M' },
 
 
     { id: 35, name: 'Saharsh', year: 'Year 4' },

@@ -107,9 +107,18 @@ const AttendanceForm = () => {
                  <select value={gradeId} onChange={handleGradeChange}>
                      <option value="">Select Year</option>
                     <option value="Year 4">Year 4</option>
+                    <option value="Year 4M">Year 4M</option>
                      <option value="Year 5">Year 5</option>
+                     <option value="Year 5M">Year 5M</option>
                    <option value="Year 6">Year 6</option>
-                    <option value="GCSE">GCSE</option>
+                   <option value="Year 7">Year 7</option>
+                   <option value="Year 8">Year 8</option>
+                   <option value="Year 9">Year 9</option>
+                    <option value="GCSE(10)">GCSE(10)</option>
+                    <option value="GCSE(11)">GCSE(11)</option>
+
+
+
                 </select>
 
                    </div>
