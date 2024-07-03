@@ -33,6 +33,7 @@ import StudentExamAttemptSpell from "./ExamComponent/StudentExamAttemptSpell";
 import StudentExamAttemptBlanks from "./ExamComponent/StudentExamAttemptBlanks";
 import AddAttendance from "./AttendanceComponent/AddAttendance";
 import AttendanceReport from "./AttendanceComponent/AttendanceReport";
+import MyAttendanceReport from "./AttendanceComponent/MyAttendanceReport"
 
 function App() {
   return (
@@ -97,6 +98,7 @@ function App() {
         <Route path="/exam/student/attempt" element={<StudentExamAttempt />} />
         <Route path="/exam/student/attemptSpell" element={<StudentExamAttemptSpell />} />
         <Route path="/exam/student/attemptBlanks" element={<StudentExamAttemptBlanks />} />
+        <Route path="/student/attendance/myReport/" element={<MyAttendanceReport />} />
 
         <Route
           path="/exam/student/result/all"

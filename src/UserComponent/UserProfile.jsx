@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 const UserProfile = () => {
   const location = useLocation();
   var user = location.state; // use this in case of Student & Teacher
+  console.log(user)
 
   return (
     <div>
