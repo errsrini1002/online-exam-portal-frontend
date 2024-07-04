@@ -9,8 +9,6 @@ const url = config.url.BASE_URL;
 const ViewStudentExamResults = () => {
   const [results, setResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedMonth, setSelectedMonth] = useState("");
-  const [selectedYear, setSelectedYear] = useState("");
   const student_jwtToken = sessionStorage.getItem("student-jwtToken");
   const student = JSON.parse(sessionStorage.getItem("active-student"));
 
@@ -36,8 +34,8 @@ const ViewStudentExamResults = () => {
     return response.data;
   };
 
-  const viewExamResult = (result) => {
-    navigate("/exam/student/result", { state: result });
+  const viewExamResult = (resullt) => {
+    navigate("/exam/student/result", { state: resullt });
   };
 
   const formatDateFromEpoch = (epochTime) => {
@@ -47,37 +45,19 @@ const ViewStudentExamResults = () => {
     return formattedDate;
   };
 
-  // Months array for dropdown
-  const months = [
-    { value: 1, name: 'Jan' },
-    { value: 2, name: 'Feb' },
-    { value: 3, name: 'Mar' },
-    { value: 4, name: 'Apr' },
-    { value: 5, name: 'May' },
-    { value: 6, name: 'Jun' },
-    { value: 7, name: 'Jul' },
-    { value: 8, name: 'Aug' },
-    { value: 9, name: 'Sep' },
-    { value: 10, name: 'Oct' },
-    { value: 11, name: 'Nov' },
-    { value: 12, name: 'Dec' }
-  ];
 
-  // Filtered results based on search term, month and year
-  const filteredResults = results.filter(result => {
-    const resultDate = new Date(Number(result.dateTime));
-    const matchesSearchTerm = result.exam.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      result.exam.grade.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      result.exam.course.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      result.student.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      result.student.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      result.resultStatus.toLowerCase().includes(searchTerm.toLowerCase());
 
-    const matchesMonth = selectedMonth ? (resultDate.getMonth() + 1) === parseInt(selectedMonth) : true;
-    const matchesYear = selectedYear ? resultDate.getFullYear() === parseInt(selectedYear) : true;
+   // Filtered results based on search term
+   const filteredResults = results.filter(result =>
+    result.exam.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    result.exam.grade.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    result.exam.course.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    result.student.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    result.student.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    result.resultStatus.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-    return matchesSearchTerm && matchesMonth && matchesYear;
-  });
+
 
   // sending added exam object
 
@@ -98,7 +78,7 @@ const ViewStudentExamResults = () => {
         >
           <h2>Exam Results</h2>
         </div>
-        <div className="card-body" style={{ overflowY: "auto" }}>
+       <div className="card-body" style={{ overflowY: "auto" }}>
           <input
             type="text"
             placeholder="Search..."
@@ -106,37 +86,12 @@ const ViewStudentExamResults = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="form-control mb-2"
           />
-          <div className="row mb-2">
-            <div className="col">
-              <select
-                value={selectedMonth}
-                onChange={(e) => setSelectedMonth(e.target.value)}
-                className="form-control"
-              >
-                <option value="">Select Month</option>
-                {months.map(month => (
-                  <option key={month.value} value={month.value}>{month.name}</option>
-                ))}
-              </select>
-            </div>
-            <div className="col">
-              <select
-                value={selectedYear}
-                onChange={(e) => setSelectedYear(e.target.value)}
-                className="form-control"
-              >
-                <option value="">Select Year</option>
-                {Array.from(new Set(results.map(result => new Date(Number(result.dateTime)).getFullYear()))).map(year => (
-                  <option key={year} value={year}>{year}</option>
-                ))}
-              </select>
-            </div>
-          </div>
           <div className="table-responsive">
             <table className="table table-hover text-color text-center">
               <thead className="table-bordered border-color bg-color custom-bg-text">
                 <tr>
                   <th scope="col">Exam</th>
+                  {/* <th scope="col">Grade</th> */}
                   <th scope="col">Subject</th>
                   <th scope="col">Marks Obtained</th>
                   <th scope="col">Maximum Marks</th>
@@ -146,15 +101,18 @@ const ViewStudentExamResults = () => {
                   <th scope="col">Action</th>
                 </tr>
               </thead>
+
               <tbody>
                 {filteredResults.map((result, index) => (
                   <tr key={index}>
                     <td><b>{result.exam.name}</b></td>
+                    {/* <td><b>{result.exam.grade.name}</b></td> */}
                     <td><b>{result.exam.course.name}</b></td>
                     <td><b>{result.totalCorrectAnswers}</b></td>
                     <td><b>{result.totalMarks}</b></td>
                     <td><b>{result.percentage}</b></td>
-                    <td><b>{formatDateFromEpoch(result.dateTime)}</b></td>
+                    <td><b>{ formatDateFromEpoch(result.dateTime)}</b></td>
+                    {/* <td><b>{result.student.firstName} {result.student.lastName}</b></td> */}
                     <td>
                       <b className={result.resultStatus === "Pass" ? "text-success" : "text-danger"}>
                         {result.resultStatus}
@@ -171,6 +129,64 @@ const ViewStudentExamResults = () => {
                   </tr>
                 ))}
               </tbody>
+
+
+              {/* <tbody>
+                {results.map((result) => {
+                  return (
+                    <tr>
+                      <td>
+                        <b>{result.exam.name}</b>
+                      </td>
+                      <td>
+                        <b>{result.exam.grade.name}</b>
+                      </td>
+                      <td>
+                        <b>{result.exam.course.name}</b>
+                      </td>
+                      <td>
+                        <b>
+                       {formatDateFromEpoch(result.dateTime)
+                            // {formatDateFromEpoch(result.exam.startTime)
+                          //  +   "-" +   formatDateFromEpoch(result.exam.endTime)
+                           }
+                        </b>
+                      </td>
+                      <td>
+                        {(() => {
+                          if (result.resultStatus === "Pass") {
+                            return (
+                              <div>
+                                <b className="text-success">
+                                  {result.resultStatus}
+                                </b>
+                              </div>
+                            );
+                          } else {
+                            return (
+                              <div>
+                                <b className="text-danger">
+                                  {result.resultStatus}
+                                </b>
+                              </div>
+                            );
+                          }
+                        })()}
+                      </td>
+                      <td>
+                        <div>
+                          <button
+                            onClick={(e) => viewExamResult(result)}
+                            className="btn btn-sm bg-color custom-bg-text ms-2"
+                          >
+                            View Result
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody> */}
             </table>
           </div>
         </div>
