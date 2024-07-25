@@ -61,6 +61,45 @@ const AdminHeader = () => {
       </li>
 
 
+      <li class="nav-item">
+        <Link
+          to="exam/question/addQuestion"
+          class="nav-link active"
+          aria-current="page"
+        >
+          <b className="text-color"> Add Question</b>
+        </Link>
+      </li>
+
+      <li class="nav-item">
+        <Link
+          to="exam/question/getQuestions"
+          class="nav-link active"
+          aria-current="page"
+        >
+          <b className="text-color"> Questions </b>
+        </Link>
+      </li>
+
+      <li class="nav-item">
+        <Link
+          to="kbc/Kbc"
+          class="nav-link active"
+          aria-current="page"
+        >
+          <b className="text-color"> KBC </b>
+        </Link>
+      </li>
+
+      <li class="nav-item">
+        <Link
+          to="/learnings/mylearnings"
+          class="nav-link active"
+          aria-current="page"
+        >
+          <b className="text-color"> MyLearnings </b>
+        </Link>
+      </li>
 
 
       <li class="nav-item">

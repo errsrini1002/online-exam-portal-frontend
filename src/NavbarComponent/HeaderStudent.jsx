@@ -46,6 +46,17 @@ const HeaderStudent = () => {
         </Link>
       </li>
 
+      <li class="nav-item">
+        <Link
+          to="/learnings/mylearnings"
+          class="nav-link active"
+          aria-current="page"
+        >
+          <b className="text-color"> MyLearnings </b>
+        </Link>
+      </li>
+
+
 
       <li class="nav-item">
         <Link

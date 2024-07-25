@@ -34,6 +34,11 @@ import StudentExamAttemptBlanks from "./ExamComponent/StudentExamAttemptBlanks";
 import AddAttendance from "./AttendanceComponent/AddAttendance";
 import AttendanceReport from "./AttendanceComponent/AttendanceReport";
 import MyAttendanceReport from "./AttendanceComponent/MyAttendanceReport"
+import AddQuestion from "./ExamQuestionComponent/AddQuestion";
+import QuestionNavigator from "./ExamQuestionComponent/QuestionNavigator";
+import Kbc from "./kbc/Kbc";
+import SubjectSelector from "./Learnings/SubjectSelector";
+//import Homepg from "./Homepages/Homepg";
 
 function App() {
   return (
@@ -56,6 +61,11 @@ function App() {
         <Route path="/admin/course/update" element={<UpdateCourseForm />} />
         <Route path="/admin/attendance/add" element={<AddAttendance />} />
         <Route path="/admin/attendance/details" element={<AttendanceReport />} />
+        <Route path="/kbc/Kbc" element={<Kbc />} />
+        <Route path="/learnings/mylearnings" element={<SubjectSelector />} />
+        {/* <Route path="/kbc/Kbc" element={<Homepg />} /> */}
+        {/* <Route path="/Homepages/Homepg" element={<Homepg />} /> */}
+        
         <Route
           path="/admin/grade/:gradeId/course/"
           element={<ViewAllCourses />}
@@ -70,6 +80,10 @@ function App() {
         <Route path="/exam/questions" element={<ViewExamQuestions />} />
         
         <Route path="/exam/add" element={<AddExamForm />} />
+
+        <Route path="/exam/question/addQuestion" element={<AddQuestion />} />
+        <Route path="/exam/question/getQuestions" element={<QuestionNavigator/>} />
+
         <Route
           path="/exam/grade-wise/upcoming"
           element={<ViewGradeUpcomingExams />}

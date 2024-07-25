@@ -77,7 +77,7 @@ const AddExamQuestion = ({ exam }) => {
         questionRequest.option4 +
         "]";
 
-      fetch(url + "/exam/question/add", {
+      fetch(url + "/exam/question/addQuestion", {
         method: "POST",
         headers: {
           Accept: "application/json",

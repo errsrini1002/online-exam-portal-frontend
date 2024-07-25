@@ -1,0 +1,17 @@
+.subject-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .dropdowns {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .pdf-viewer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
