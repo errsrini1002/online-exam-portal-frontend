@@ -38,6 +38,8 @@ import AddQuestion from "./ExamQuestionComponent/AddQuestion";
 import QuestionNavigator from "./ExamQuestionComponent/QuestionNavigator";
 import Kbc from "./kbc/Kbc";
 import SubjectSelector from "./Learnings/SubjectSelector";
+import CourseChapters from "./CourseComponent/CourseChapters";
+import HomeworkForm from "./CourseComponent/HomeworkForm";
 //import Homepg from "./Homepages/Homepg";
 
 function App() {
@@ -63,6 +65,11 @@ function App() {
         <Route path="/admin/attendance/details" element={<AttendanceReport />} />
         <Route path="/kbc/Kbc" element={<Kbc />} />
         <Route path="/learnings/mylearnings" element={<SubjectSelector />} />
+
+        <Route path="/courses/coursedetails" element={<CourseChapters />} />
+
+        <Route path="/courses/homework" element={<HomeworkForm />} />
+
         {/* <Route path="/kbc/Kbc" element={<Homepg />} /> */}
         {/* <Route path="/Homepages/Homepg" element={<Homepg />} /> */}
         

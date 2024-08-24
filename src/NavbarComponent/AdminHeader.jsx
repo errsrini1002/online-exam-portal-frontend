@@ -101,6 +101,27 @@ const AdminHeader = () => {
         </Link>
       </li>
 
+      <li class="nav-item">
+        <Link
+          to="/courses/coursedetails"
+          class="nav-link active"
+          aria-current="page"
+        >
+          <b className="text-color"> Course Details </b>
+        </Link>
+      </li>
+
+     
+
+      <li class="nav-item">
+        <Link
+          to="/courses/homework"
+          class="nav-link active"
+          aria-current="page"
+        >
+          <b className="text-color"> Homework </b>
+        </Link>
+      </li>
 
       <li class="nav-item">
         <Link
