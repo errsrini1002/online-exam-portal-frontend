@@ -76,9 +76,9 @@ function HomeworkForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const newHomework = {
-      week_number: weekData.weekNumber,
-      grade_id: selectedGrade,
-      home_work: homework,
+      weekNumber : weekData.weekNumber,
+      gradeId : selectedGrade,
+      homeWork: homework,      
       description: description,
     };
 

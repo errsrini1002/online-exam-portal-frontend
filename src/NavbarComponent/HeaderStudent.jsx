@@ -42,7 +42,17 @@ const HeaderStudent = () => {
           class="nav-link active"
           aria-current="page"
         >
-          <b className="text-color">My Attendance</b>
+          <b className="text-color">MyAttendance</b>
+        </Link>
+      </li>
+
+      <li class="nav-item">
+        <Link
+          to="/student/myCourseDetails"
+          class="nav-link active"
+          aria-current="page"
+        >
+          <b className="text-color">MyCourseDetails</b>
         </Link>
       </li>
 
@@ -56,8 +66,28 @@ const HeaderStudent = () => {
         </Link>
       </li>
 
+      {/* <li class="nav-item">
+        <Link
+          to="/student/tempate"
+          class="nav-link active"
+          aria-current="page"
+        >
+          <b className="text-color">StudentTemplate</b>
+        </Link>
+      </li> */}
+
+      <li class="nav-item">
+        <Link
+          to="/student/myhomework"
+          class="nav-link active"
+          aria-current="page"
+        >
+          <b className="text-color">MyHomework</b>
+        </Link>
+      </li>
 
 
+      
       <li class="nav-item">
         <Link
           to="/exam/student/grade-wise/ongoing"

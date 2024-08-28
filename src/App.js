@@ -40,6 +40,9 @@ import Kbc from "./kbc/Kbc";
 import SubjectSelector from "./Learnings/SubjectSelector";
 import CourseChapters from "./CourseComponent/CourseChapters";
 import HomeworkForm from "./CourseComponent/HomeworkForm";
+import StudentTemplate from "./Templates/StudentTemplate"; 
+import StudentHomework from "./CourseComponent/StudentHomework"; 
+import MyCourseDetails from "./CourseComponent/MyCourseDetails";
 //import Homepg from "./Homepages/Homepg";
 
 function App() {
@@ -69,6 +72,11 @@ function App() {
         <Route path="/courses/coursedetails" element={<CourseChapters />} />
 
         <Route path="/courses/homework" element={<HomeworkForm />} />
+
+        <Route path="/student/tempate" element={<StudentTemplate/>} />
+        <Route path="/student/myhomework" element={<StudentHomework/>} />
+
+        <Route path="/student/myCourseDetails" element={<MyCourseDetails/>} />
 
         {/* <Route path="/kbc/Kbc" element={<Homepg />} /> */}
         {/* <Route path="/Homepages/Homepg" element={<Homepg />} /> */}
