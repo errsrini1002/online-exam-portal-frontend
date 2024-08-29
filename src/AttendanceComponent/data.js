@@ -32,6 +32,8 @@ const studentsData = [
 
     { id: 44, name: 'Sahasra', year: 'Year 4' },
     { id: 45, name: 'Aarna', year: 'Year 8' },
+    { id: 51, name: 'Maathruka', year: 'Year 4' },
+    { id: 54, name: 'Lithik', year: 'Year 4' },
 
 
   ];
