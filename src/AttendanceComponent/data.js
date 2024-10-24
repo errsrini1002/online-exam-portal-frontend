@@ -25,7 +25,7 @@ const studentsData = [
     { id: 34, name: 'Roshini', year: 'Year 5M' },
 
 
-    { id: 35, name: 'Saharsh', year: 'Year 4' },
+    { id: 35, name: 'Saharsh', year: 'Year 5' },
     { id: 36, name: 'Riharshi', year: 'Year 4' },
     { id: 38, name: 'Noel', year: 'Year 7' },
     { id: 39, name: 'Mrunali', year: 'GCSE' },
@@ -34,6 +34,9 @@ const studentsData = [
     { id: 45, name: 'Aarna', year: 'Year 8' },
     { id: 51, name: 'Maathruka', year: 'Year 4' },
     { id: 54, name: 'Lithik', year: 'Year 4' },
+    { id: 62, name: 'Vivina', year: 'Year 5' },
+    { id: 63, name: 'Adwita', year: 'Year 5' },
+  
 
 
   ];
