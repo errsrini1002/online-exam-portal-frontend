@@ -36,6 +36,7 @@ import AttendanceReport from "./AttendanceComponent/AttendanceReport";
 import MyAttendanceReport from "./AttendanceComponent/MyAttendanceReport"
 import AddQuestion from "./ExamQuestionComponent/AddQuestion";
 import QuestionNavigator from "./ExamQuestionComponent/QuestionNavigator";
+import QuestionsNavigation from "./ExamQuestionComponent/QuestionsNavigation";
 import Kbc from "./kbc/Kbc";
 import SubjectSelector from "./Learnings/SubjectSelector";
 import CourseChapters from "./CourseComponent/CourseChapters";
@@ -43,6 +44,8 @@ import HomeworkForm from "./CourseComponent/HomeworkForm";
 import StudentTemplate from "./Templates/StudentTemplate"; 
 import StudentHomework from "./CourseComponent/StudentHomework"; 
 import MyCourseDetails from "./CourseComponent/MyCourseDetails";
+
+
 //import Homepg from "./Homepages/Homepg";
 
 function App() {
@@ -51,6 +54,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        {/* <Route path="/" element={<QuestionNavigator />} /> */}
+        {/* <Route path="/" element={<QuestionsNavigation />} /> */}
+        {/* <Route path="/" element={<AddQuestion />} /> */}
+
         <Route path="/home" element={<HomePage />} />
         <Route path="/user/admin/register" element={<AdminRegisterForm />} />
         <Route path="/user/login" element={<UserLoginForm />} />
@@ -98,6 +105,8 @@ function App() {
 
         <Route path="/exam/question/addQuestion" element={<AddQuestion />} />
         <Route path="/exam/question/getQuestions" element={<QuestionNavigator/>} />
+
+        <Route path="/exam/question/images" element={<QuestionsNavigation/>} />
 
         <Route
           path="/exam/grade-wise/upcoming"

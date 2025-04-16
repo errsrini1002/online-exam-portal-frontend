@@ -61,6 +61,9 @@ const ViewStudentOngoingExams = () => {
     case 'Match':
       navigate("/exam/student/attemptSpell", { state: exam });
       break;
+      case 'Image':
+        navigate("/exam/question/images");        
+      break;
     default:
       navigate("/exam/student/attempt", { state: exam });
   }

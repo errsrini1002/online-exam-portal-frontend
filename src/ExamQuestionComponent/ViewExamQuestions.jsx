@@ -5,6 +5,7 @@ import axios from "axios";
 import AddExamQuestion from "./AddExamQuestion";
 import ViewAllQuestions from "./ViewAllQuestions";
 import AddExamQuestionSpell from "./AddExamQuestionSpell";
+import QuestionsNavigation from "./QuestionsNavigation2";
 
 const ViewExamQuestions = () => {
   const location = useLocation();
@@ -12,7 +13,8 @@ const ViewExamQuestions = () => {
   let [exam, setExam] = useState(location.state);
 
   let selectedView;
-
+  console.log('Test exam');
+  console.log('Exam Type: ', exam.examType ); 
   // Determine which view to render based on the variableValue
   switch (exam.examType) {
     case 'Multiple':
@@ -27,6 +29,8 @@ const ViewExamQuestions = () => {
     case 'Match':
       selectedView = <AddExamQuestionSpell exam={exam} />;
       break;
+    case 'Image':
+        selectedView = <QuestionsNavigation/>;   
     default:
       selectedView = <AddExamQuestion exam={exam} />;
   }

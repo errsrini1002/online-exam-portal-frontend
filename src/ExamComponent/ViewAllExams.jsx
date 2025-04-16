@@ -36,7 +36,7 @@ const ViewAllExams = () => {
     navigate("/exam/questions", { state: exam });
   };
 
-  const formatDateFromEpoch = (epochTime) => {
+    const formatDateFromEpoch = (epochTime) => {
     const date = new Date(Number(epochTime));
     const formattedDate = date.toLocaleString(); // Adjust the format as needed
 
