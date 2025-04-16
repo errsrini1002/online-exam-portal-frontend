@@ -24,7 +24,8 @@ const UploadPage = () => {
         formData.append("examId", examId);
 
         try {
-            const response = await fetch("http://localhost:8080/upload", {
+           // const response = await fetch("http://localhost:8080/upload", {
+                const response = await fetch("http://193.203.190.238:8080/upload", {             
                 method: "POST",
                 body: formData,
             });
