@@ -44,6 +44,9 @@ import HomeworkForm from "./CourseComponent/HomeworkForm";
 import StudentTemplate from "./Templates/StudentTemplate"; 
 import StudentHomework from "./CourseComponent/StudentHomework"; 
 import MyCourseDetails from "./CourseComponent/MyCourseDetails";
+import CustomerPayments from "./payments/CustomerPayments";
+import InventoryForm from "./Inventory/InventoryForm";
+import InventoryList from "./Inventory/InventoryList";
 
 
 //import Homepg from "./Homepages/Homepg";
@@ -57,6 +60,9 @@ function App() {
         {/* <Route path="/" element={<QuestionNavigator />} /> */}
         {/* <Route path="/" element={<QuestionsNavigation />} /> */}
         {/* <Route path="/" element={<AddQuestion />} /> */}
+        {/* <Route path="/" element={<CustomerPayments />} /> */}
+        {/* <Route path="/" element={<InventoryList />} /> */}
+        {/* <Route path="/" element={<InventoryForm />} /> */}
 
         <Route path="/home" element={<HomePage />} />
         <Route path="/user/admin/register" element={<AdminRegisterForm />} />
@@ -137,6 +143,9 @@ function App() {
         <Route path="/exam/student/attemptSpell" element={<StudentExamAttemptSpell />} />
         <Route path="/exam/student/attemptBlanks" element={<StudentExamAttemptBlanks />} />
         <Route path="/student/attendance/myReport/" element={<MyAttendanceReport />} />
+
+        <Route path="/inventoryList" element={<InventoryList />} />
+        <Route path="/myPayments" element={<CustomerPayments />} />
 
         <Route
           path="/exam/student/result/all"

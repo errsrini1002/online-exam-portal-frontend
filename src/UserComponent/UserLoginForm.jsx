@@ -55,6 +55,18 @@ const UserLoginForm = () => {
                   "active-student",
                   JSON.stringify(res.user)
                 );
+                sessionStorage.setItem("customer-jwtToken", res.jwtToken);
+              } else if (res.user.role === "Customer") {
+                sessionStorage.setItem(
+                  "active-customer",
+                  JSON.stringify(res.user)
+                );
+                sessionStorage.setItem("director-jwtToken", res.jwtToken);
+              } else if (res.user.role === "Director") {
+                sessionStorage.setItem(
+                  "active-director",
+                  JSON.stringify(res.user)
+                );
                 sessionStorage.setItem("student-jwtToken", res.jwtToken);
               }
             }
@@ -140,6 +152,8 @@ const UserLoginForm = () => {
                     <option value="Admin"> Admin </option>
                     <option value="Teacher"> Teacher </option>
                     <option value="Student"> Student </option>
+                    <option value="Customer"> Customer </option>
+                    <option value="Director"> Director </option>
                   </select>
                 </div>
 
