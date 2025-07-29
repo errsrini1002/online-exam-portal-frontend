@@ -47,6 +47,10 @@ import MyCourseDetails from "./CourseComponent/MyCourseDetails";
 import CustomerPayments from "./payments/CustomerPayments";
 import InventoryForm from "./Inventory/InventoryForm";
 import InventoryList from "./Inventory/InventoryList";
+import ProblemsApp from "./payments/ProblemsApp";
+import ProblemList from "./payments/ProblemList";
+import SalesApp from "./Inventory/SalesApp";
+
 
 
 //import Homepg from "./Homepages/Homepg";
@@ -63,6 +67,10 @@ function App() {
         {/* <Route path="/" element={<CustomerPayments />} /> */}
         {/* <Route path="/" element={<InventoryList />} /> */}
         {/* <Route path="/" element={<InventoryForm />} /> */}
+        {/* <Route path="/" element={<ProblemsApp />} /> */}
+        {/* <Route path="/" element={<SalesApp />} /> */}
+
+        {/* <Route path="/" element={<ProblemList />} /> */}
 
         <Route path="/home" element={<HomePage />} />
         <Route path="/user/admin/register" element={<AdminRegisterForm />} />
