@@ -6,14 +6,14 @@ const studentsData = [
     { id: 10, name: 'Abhiram', year: 'Year 6' },
 
     { id: 12, name: 'Samanvi', year: 'Year 6' },
-    { id: 13, name: 'Gautam', year: 'Year 6' },
+    { id: 13, name: 'Gautam', year: 'Year 8' },
     // { id: 14, name: 'Varshini', year: 'Year 6' },
 
-    { id: 7, name: 'Dheekshita', year: 'Year 6' },
+    { id: 7, name: 'Dheekshita', year: 'Year 8' },
     { id: 20, name: 'Parinitha', year: 'Year 4' },
     { id: 21, name: 'Likitha', year: 'Year 4' },
     { id: 22, name: 'Rinidh', year: 'Year 6' },
-    { id: 23, name: 'Manu', year: 'Year 6' },
+    { id: 23, name: 'Manu', year: 'Year 8' },
     { id: 26, name: 'Sri', year: 'Year 8' },
 
     { id: 27, name: 'Kanav', year: 'Year 4M' },
@@ -36,6 +36,8 @@ const studentsData = [
     { id: 54, name: 'Lithik', year: 'Year 4' },
     { id: 62, name: 'Vivina', year: 'Year 5' },
     { id: 63, name: 'Adwita', year: 'Year 5' },
+    { id: 80, name: 'Aarush', year: 'Year 10' },
+    { id: 81, name: 'Ananya', year: 'Year 10' },
   
 
 
