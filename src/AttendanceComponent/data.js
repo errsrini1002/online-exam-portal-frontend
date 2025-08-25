@@ -38,8 +38,10 @@ const studentsData = [
     { id: 63, name: 'Adwita', year: 'Year 5' },
     { id: 80, name: 'Aarush', year: 'Year 10' },
     { id: 81, name: 'Ananya', year: 'Year 10' },
+    { id: 82, name: 'Manu8', year: 'Year 8' },
+    { id: 83, name: 'Gautam8', year: 'Year 8' },
+    { id: 84, name: 'Dheekshita8', year: 'Year 8' },  
   
-
 
   ];
   
