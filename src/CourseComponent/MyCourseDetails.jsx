@@ -78,7 +78,8 @@ function MyCourseDetails() {
       <table className="course-table">
         <thead>
           <tr>
-            <th>Chapter ID</th>
+            {/* <th>Chapter ID</th> */}
+             <th>S.No</th>
             <th>Chapter</th>
             <th>Topics</th>
             <th>Status</th>
@@ -89,7 +90,8 @@ function MyCourseDetails() {
         <tbody>
           {chapters.map((chapter) => (
             <tr key={chapter.chapterId}>
-              <td>{chapter.chapterId}</td>
+              {/* <td>{chapter.chapterId}</td> */}
+              <td>{index + 1}</td> {/* Sno column */}
               <td>{chapter.chapter}</td>
               <td>{chapter.topics}</td>
               <td>{chapterStatuses[chapter.chapterId]?.status || 'Not Available'}</td> {/* Display status */}
