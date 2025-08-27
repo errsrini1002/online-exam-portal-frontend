@@ -88,7 +88,7 @@ function MyCourseDetails() {
           </tr>
         </thead>
         <tbody>
-          {chapters.map((chapter) => (
+          {chapters.map((chapter, index) => (
             <tr key={chapter.chapterId}>
               {/* <td>{chapter.chapterId}</td> */}
               <td>{index + 1}</td> {/* Sno column */}
