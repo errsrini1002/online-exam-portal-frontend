@@ -84,7 +84,7 @@ function MyCourseDetails() {
             <th>Topics</th>
             <th>Status</th>
             <th>Remarks</th>
-            <th>Action</th>
+            {/* <th>Action</th> */}
           </tr>
         </thead>
         <tbody>
@@ -96,9 +96,10 @@ function MyCourseDetails() {
               <td>{chapter.topics}</td>
               <td>{chapterStatuses[chapter.chapterId]?.status || 'Not Available'}</td> {/* Display status */}
               <td>{chapterStatuses[chapter.chapterId]?.remarks || 'None'}</td> {/* Display remarks */}
-              <td>
-                <button onClick={() => fetchChapterStatus(chapter.chapterId)}>Get Status</button> {/* Fetch status for the selected chapter */}
-              </td>
+              {/* <td> */}
+                {/* <button onClick={() => fetchChapterStatus(chapter.chapterId)}>Get Status</button>  */}
+                {/* Fetch status for the selected chapter */}
+              {/* </td> */}
             </tr>
           ))}
         </tbody>
